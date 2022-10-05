@@ -33,6 +33,8 @@ public class Score : MonoBehaviour
     public static void AddScore(int num)
     {
         // ˆø”‚É“ü‚ê‚½’l‚ğ‰ÁZ
+        Debug.Log("‰ÁZ‚·‚é‘O");
         score += num;
+        Debug.Log("‰ÁZ‚·‚éŒã");
     }
 }

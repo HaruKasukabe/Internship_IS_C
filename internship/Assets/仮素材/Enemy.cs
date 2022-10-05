@@ -6,6 +6,10 @@ public class Enemy : MonoBehaviour
 {
     // 敵の移動速度
     public float MoveSpeed = 0.01f;
+    // このエネミーのスコア
+    public int NumScore = 100;
+    // 仮で敵のスコアをランダムで生成
+    int[] TestNumScore = { 10, 100, 1000 };
     // Start is called before the first frame update
     void Start()
     {
@@ -30,5 +34,16 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
             Destroy(collision.gameObject);
+    }
+
+    // 敵を倒したときのこの敵のスコアを教える
+    public int GetEnemyScore()
+    {
+        //現在は仮置きの為、スコア引数を渡さない
+        //return NumScore;
+        // 仮処置
+        int i = Random.Range(0, 3);
+        Debug.Log(TestNumScore[i]);
+        return TestNumScore[i];
     }
 }
