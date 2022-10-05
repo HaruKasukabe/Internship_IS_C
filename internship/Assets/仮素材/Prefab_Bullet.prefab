@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8082840082514115130}
   - component: {fileID: 8082840082514115131}
   - component: {fileID: 8082840082514115133}
-  - component: {fileID: -3648134071703029458}
+  - component: {fileID: 7127653627130521290}
   - component: {fileID: 6978637320247897347}
   m_Layer: 6
   m_Name: Prefab_Bullet
@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 0.25
---- !u!50 &-3648134071703029458
+  player_bullet: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+--- !u!50 &7127653627130521290
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -131,7 +132,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

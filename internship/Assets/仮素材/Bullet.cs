@@ -27,15 +27,15 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("当たりました");
-        if(collision.gameObject.tag =="Enemy")
+        if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("当たったのはEnemyでした");
-            Destroy(this.gameObject);
-            Destroy(collision.gameObject);
-            player_bullet.CreatePlayer();
+
+            player_bullet.CreatePlayer();  // 使い魔開放
+            Destroy(this.gameObject);      // バレットを削除
+            Destroy(collision.gameObject); // 敵を削除
+            
         }
     }
 }
