@@ -18,7 +18,7 @@ public class CreateEnemy : MonoBehaviour
     void Update()
     {
         CreateTimer++;
-        if(CreateTimer>=60)
+        if(CreateTimer>=120)
         {
             CreateTimer = 0;
             EnemyPos = Random.Range(-3, 3);
