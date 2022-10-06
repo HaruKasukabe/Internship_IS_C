@@ -6,8 +6,9 @@ public class Bullet : MonoBehaviour
 {
     // 弾の移動速度
     public float MoveSpeed = 0.01f;
-
+    public Enemy enemy;
     public Player_Bullet player_bullet;
+   
 
     public static float Bullet_Power;
 
@@ -32,6 +33,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+<<<<<<< HEAD
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -40,6 +42,17 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
             Destroy(other.gameObject);
             player_bullet.CreatePlayer();
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+
+            player_bullet.CreatePlayer();  // 使い魔開放
+            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            Destroy(this.gameObject);      // バレットを削除
+            Destroy(collision.gameObject); // 敵を削除
+>>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
         }
     }
 }
