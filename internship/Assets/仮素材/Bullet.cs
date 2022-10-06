@@ -9,17 +9,22 @@ public class Bullet : MonoBehaviour
 
     public Player_Bullet player_bullet;
 
+    public static float Bullet_Power;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Bullet_Power = 1.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ’e‚ğˆÚ“®
-        this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
+        if (this.gameObject.name != "Prefab_Seeker")
+        {
+            // ’e‚ğˆÚ“®
+            this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
+        }
 
         // ƒJƒƒ‰ŠO‚Éo‚½‚çíœ
         if (!GetComponent<Renderer>().isVisible)
@@ -27,14 +32,13 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("“–‚½‚è‚Ü‚µ‚½");
-        if(collision.gameObject.tag =="Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("“–‚½‚Á‚½‚Ì‚ÍEnemy‚Å‚µ‚½");
             Destroy(this.gameObject);
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
             player_bullet.CreatePlayer();
         }
     }

@@ -5,16 +5,18 @@ using UnityEngine;
 public class Player_Bullet : MonoBehaviour
 {
     // プレイヤー移動の変数生成
-     public float MoveSpeed = 0.001f;
+    public float MoveSpeed = 0.01f;
     // 生成する弾を選択
     public GameObject obj;
     // 弾を生成するタイマー
     public int BulletTimer = 60;
+    // プレイヤーの体力
+    public int HP;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -24,12 +26,12 @@ public class Player_Bullet : MonoBehaviour
         BulletTimer++;
         // プレイヤー移動
         // 上
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             this.transform.Translate(0.0f, MoveSpeed, 0.0f);
         }
         // 下
-        if(Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             this.transform.Translate(0.0f, -MoveSpeed, 0.0f);
         }
@@ -44,14 +46,14 @@ public class Player_Bullet : MonoBehaviour
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
         // 弾を生成
-        if(Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
+        if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
             Instantiate(obj,
-                new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z), 
+                new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                 Quaternion.identity);
         }
-        
+
     }
     // プレイヤーを増殖
     public void CreatePlayer()
@@ -61,5 +63,19 @@ public class Player_Bullet : MonoBehaviour
         Instantiate(this.gameObject,
             new Vector3(this.transform.position.x, pos.y, this.transform.position.z),
              Quaternion.identity);
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "E_Bullet")
+        {
+            Destroy(other.gameObject);
+            HP -= 1;
+            if (HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }

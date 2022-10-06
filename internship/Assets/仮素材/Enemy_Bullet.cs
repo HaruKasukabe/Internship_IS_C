@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Enemy_Bullet : MonoBehaviour
 {
-    float Timer;
+    private float shootTime = 1.0f;
+    private float currentTime = 0.0f;
 
     public GameObject obj;
 
@@ -17,14 +18,15 @@ public class Enemy_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Timer = Timer + Time.deltaTime;
-        if (Timer >= 1.0f)
+        currentTime = Time.deltaTime;
+        if (shootTime > currentTime)
         {
+            currentTime = 0.0f;
+
             Instantiate(obj,
     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
     Quaternion.identity);
 
-            Timer = 0.0f;
         }
     }
 }
