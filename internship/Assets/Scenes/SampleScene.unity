@@ -288,8 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f5956691de49a4a90df65223658556, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScoreTextObj: {fileID: 399096277}
-  ScoreReset: 1
+  ScoreText: {fileID: 399096277}
 --- !u!1001 &1710885757
 PrefabInstance:
   m_ObjectHideFlags: 0
