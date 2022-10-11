@@ -21,8 +21,8 @@ public class Enemy_Bullet : MonoBehaviour
         if (Timer >= 1.0f)
         {
             Instantiate(obj,
-    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
-    Quaternion.identity);
+            new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+            Quaternion.identity);
 
             Timer = 0.0f;
         }

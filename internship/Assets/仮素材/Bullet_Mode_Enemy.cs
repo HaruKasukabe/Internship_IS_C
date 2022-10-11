@@ -7,7 +7,7 @@ public class Bullet_Mode_Enemy : MonoBehaviour
     // 弾の移動速度
     public float MoveSpeed = 0.05f;
 
-    public Player_Bullet player_bullet;
+    Player_Bullet player_bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -27,12 +27,11 @@ public class Bullet_Mode_Enemy : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("当たりました");
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("当たったのはPlayerでした");
+            // あたったエネミーを削除
             Destroy(this.gameObject);
         }
     }

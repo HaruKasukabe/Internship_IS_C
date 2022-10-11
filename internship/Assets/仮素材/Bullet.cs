@@ -6,8 +6,9 @@ public class Bullet : MonoBehaviour
 {
     // 弾の移動速度
     public float MoveSpeed = 0.01f;
-    public Enemy enemy;
-    public Player_Bullet player_bullet;
+    Enemy enemy;
+    Player_Bullet player_bullet;
+    Familiar familiar;
    
 
     // Start is called before the first frame update
@@ -32,11 +33,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
-            player_bullet.CreatePlayer();  // 使い魔開放
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
         }
+
     }
 }

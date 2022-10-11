@@ -70,34 +70,7 @@ public class Player_Bullet : MonoBehaviour
         }
         
     }
-    // プレイヤーを増殖
-    public void CreatePlayer()
-    {
-        //Debug.Log("現在使い魔は"+NumFamiliar+"です");
-        // 20体未満なら
-        if (NumFamiliar < Maxfamiliar)
-        {
-            //Debug.Log("使い魔は" + Maxfamiliar + "以下です");
-            Vector3 pos = this.transform.position;
-            pos.y = -0.5f;
-            Rand = Random.Range(1, 4);
-            if (Rand == 1)
-            {
-                Instantiate(FamiliarObj01, pos, Quaternion.identity);
-            }
-            if (Rand == 2)
-            {
-                Instantiate(FamiliarObj02, pos, Quaternion.identity);
-
-            }
-            if (Rand == 3)
-            {
-                Instantiate(FamiliarObj03, pos, Quaternion.identity);
-            }
-            NumFamiliar++;
-            //Debug.Log("使い魔を生成しました");
-        }
-    }
+  
     // 現在の使い魔の数を取得
     public int GetFamiliarNum()
     {
