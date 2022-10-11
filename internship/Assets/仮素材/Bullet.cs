@@ -34,16 +34,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-<<<<<<< HEAD
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("当たったのはEnemyでした");
-            Destroy(this.gameObject);
-            Destroy(other.gameObject);
-            player_bullet.CreatePlayer();
-=======
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
@@ -51,7 +42,6 @@ public class Bullet : MonoBehaviour
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
->>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
         }
 
     }

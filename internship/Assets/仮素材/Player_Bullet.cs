@@ -10,14 +10,8 @@ public class Player_Bullet : MonoBehaviour
     public GameObject Bulletobj;
     // 弾を生成するタイマー
     public int BulletTimer = 60;
-<<<<<<< HEAD
     // プレイヤーの体力
     public int HP;
-=======
-    // プレイヤー増殖
-    public GameObject FamiliarObj01;
-    public GameObject FamiliarObj02;
-    public GameObject FamiliarObj03;
     // 現在いる使い魔の数
     int NumFamiliar = 0;
     // 最大使い魔数
@@ -29,16 +23,11 @@ public class Player_Bullet : MonoBehaviour
     {
         NumFamiliar = 0;
     }
->>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
 
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD
-
-=======
         NumFamiliar = 0;
->>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
     }
 
     // Update is called once per frame
@@ -71,15 +60,11 @@ public class Player_Bullet : MonoBehaviour
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
-<<<<<<< HEAD
-            Instantiate(obj,
-                new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
-=======
+
             Vector2 pos = this.transform.position;
             pos.x += 0.25f;
             Instantiate(Bulletobj,
-                new Vector3(pos.x,this.transform.position.y,this.transform.position.z), 
->>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
+                new Vector3(pos.x,this.transform.position.y,this.transform.position.z),
                 Quaternion.identity);
         }
 
