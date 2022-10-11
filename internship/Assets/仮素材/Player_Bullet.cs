@@ -5,11 +5,15 @@ using UnityEngine;
 public class Player_Bullet : MonoBehaviour
 {
     // プレイヤー移動の変数生成
-     public float MoveSpeed = 0.001f;
+    public float MoveSpeed = 0.01f;
     // 生成する弾を選択
     public GameObject Bulletobj;
     // 弾を生成するタイマー
     public int BulletTimer = 60;
+<<<<<<< HEAD
+    // プレイヤーの体力
+    public int HP;
+=======
     // プレイヤー増殖
     public GameObject FamiliarObj01;
     public GameObject FamiliarObj02;
@@ -25,11 +29,16 @@ public class Player_Bullet : MonoBehaviour
     {
         NumFamiliar = 0;
     }
+>>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
+
+=======
         NumFamiliar = 0;
+>>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
     }
 
     // Update is called once per frame
@@ -39,12 +48,12 @@ public class Player_Bullet : MonoBehaviour
         BulletTimer++;
         // プレイヤー移動
         // 上
-        if(Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             this.transform.Translate(0.0f, MoveSpeed, 0.0f);
         }
         // 下
-        if(Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             this.transform.Translate(0.0f, -MoveSpeed, 0.0f);
         }
@@ -59,16 +68,21 @@ public class Player_Bullet : MonoBehaviour
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
         // 弾を生成
-        if(Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
+        if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
+<<<<<<< HEAD
+            Instantiate(obj,
+                new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+=======
             Vector2 pos = this.transform.position;
             pos.x += 0.25f;
             Instantiate(Bulletobj,
                 new Vector3(pos.x,this.transform.position.y,this.transform.position.z), 
+>>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
                 Quaternion.identity);
         }
-        
+
     }
   
     // 現在の使い魔の数を取得
@@ -82,5 +96,19 @@ public class Player_Bullet : MonoBehaviour
     {
         Debug.Log("使い魔が減りました");
         NumFamiliar--;
+    }
+
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "E_Bullet")
+        {
+            Destroy(other.gameObject);
+            HP -= 1;
+            if (HP <= 0)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 }
