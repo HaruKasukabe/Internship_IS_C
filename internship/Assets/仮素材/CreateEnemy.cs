@@ -17,6 +17,10 @@ public class CreateEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í‰½‚à‚µ‚È‚¢
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         CreateTimer++;
         if(CreateTimer>=120)
         {

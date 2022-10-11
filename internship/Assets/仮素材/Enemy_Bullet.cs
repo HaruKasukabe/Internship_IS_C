@@ -18,6 +18,10 @@ public class Enemy_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í‰½‚à‚µ‚È‚¢
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         currentTime = Time.deltaTime;
         if (shootTime > currentTime)
         {

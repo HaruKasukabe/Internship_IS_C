@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Pause : MonoBehaviour
 {
-    public GameObject pauseUI;
+    public TextMeshProUGUI pauseUI;
 
     // Start is called before the first frame update
     void Start()
     {
-        pauseUI.SetActive(!pauseUI.activeSelf);
+        pauseUI.alpha = 0.0f;
     }
 
     // Update is called once per frame
@@ -18,19 +19,26 @@ public class Pause : MonoBehaviour
         // 'P'キーでポーズ画面切替
         if (Input.GetKeyDown(KeyCode.P))
         {
-            // ポーズUIのアクティブ、非アクティブを切り替え
-            pauseUI.SetActive(!pauseUI.activeSelf);
+            // ポーズUIのアルファ値を変える
+            if (pauseUI.alpha == 0.0f)
+            {
+                pauseUI.alpha = 1.0f;
+            }
+            else
+            {
+                pauseUI.alpha = 0.0f;
+            }
         }
 
-        // ポーズUIが表示されてる時は停止
-        if (pauseUI.activeSelf)
-        {
-            Time.timeScale = 0f;
-        }
         // ポーズUIが表示されてなければ通常通り進行
+        if (pauseUI.alpha == 0.0f)
+        {
+            Time.timeScale = 1.0f;
+        }
+        // ポーズUIが表示されてる時は停止
         else
         {
-            Time.timeScale = 1f;
+            Time.timeScale = 0.0f;
         }
     }
 }

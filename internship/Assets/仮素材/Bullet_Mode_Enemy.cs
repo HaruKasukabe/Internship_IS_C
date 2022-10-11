@@ -19,6 +19,10 @@ public class Bullet_Mode_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í‰½‚à‚µ‚È‚¢
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // ’e‚ğˆÚ“®
         this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
 

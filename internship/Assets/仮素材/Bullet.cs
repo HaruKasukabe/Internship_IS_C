@@ -22,6 +22,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í‰½‚à‚µ‚È‚¢
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         if (this.gameObject.name != "Prefab_Seeker")
         {
             // ’e‚ğˆÚ“®

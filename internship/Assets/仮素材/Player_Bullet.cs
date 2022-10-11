@@ -33,6 +33,10 @@ public class Player_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は何もしない
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // 弾生成タイマー更新
         BulletTimer++;
         // プレイヤー移動
