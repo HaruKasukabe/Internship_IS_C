@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Bullet_Mode_Enemy : MonoBehaviour
 {
@@ -19,6 +18,10 @@ public class Bullet_Mode_Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は何もしない
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // 弾を移動
         this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
 
@@ -34,7 +37,6 @@ public class Bullet_Mode_Enemy : MonoBehaviour
         {
             // あたったエネミーを削除
             Destroy(this.gameObject);
-            SceneManager.LoadScene("Result");
         }
     }
 }

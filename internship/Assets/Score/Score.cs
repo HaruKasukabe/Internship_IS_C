@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
-    // コンポーネント格納用
-    Text score_text;
-
-    // インスペクターでテキストオブジェクトを入れる
-    public GameObject ScoreText;
+    public TextMeshProUGUI ScoreText;
 
     // スコア格納用
     static int score = 0;
@@ -23,16 +19,14 @@ public class Score : MonoBehaviour
         // true ならシーンのはじめに'0'に戻す
         if (ScoreReset)
             score = 0;
-
-        // オブジェクトからTextコンポーネントを取得
-        score_text = ScoreText.GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // テキストの表示を入れ替える
-        score_text.text = "Score : " + score;
+        if (ScoreText == null) return;
+
+        ScoreText.SetText("{0}", score);
     }
 
     // スコアを加算したい場所で呼び出す

@@ -20,6 +20,10 @@ public class Createfamiliar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は何もしない
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // 使い魔を生成するタイマーを更新
         CreateFamiliarTime++;
         // タイマー以上になったら
