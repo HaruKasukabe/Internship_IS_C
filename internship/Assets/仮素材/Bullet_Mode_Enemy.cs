@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Bullet_Mode_Enemy : MonoBehaviour
 {
@@ -38,7 +37,6 @@ public class Bullet_Mode_Enemy : MonoBehaviour
         {
             // あたったエネミーを削除
             Destroy(this.gameObject);
-            SceneManager.LoadScene("Result");
         }
     }
 }
