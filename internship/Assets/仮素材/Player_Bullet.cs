@@ -17,8 +17,6 @@ public class Player_Bullet : MonoBehaviour
     // Å‘åg‚¢–‚”
     public int Maxfamiliar = 20;
 
-    int Rand = 0;
-
     private void Awake()
     {
         NumFamiliar = 0;
