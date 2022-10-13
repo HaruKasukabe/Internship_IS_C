@@ -26,7 +26,7 @@ public class Score : MonoBehaviour
     {
         if (ScoreText == null) return;
 
-        ScoreText.SetText("Score : {0}", score);
+        ScoreText.SetText("{0}", score);
     }
 
     // スコアを加算したい場所で呼び出す
