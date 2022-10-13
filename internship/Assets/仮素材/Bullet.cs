@@ -43,9 +43,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            Score.AddScore(10/*enemy.GetEnemyScore()*/);// スコア加算
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
+            Player_ULT.AddUltCnt();        // 必殺技カウント加算
         }
 
     }

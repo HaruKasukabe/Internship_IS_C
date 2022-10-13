@@ -33,8 +33,12 @@ public class Familiar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は何もしない
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // 捕まっている場合は移動のみ行う
-        if(!AliveFlg)
+        if (!AliveFlg)
         {
             this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
             // 画面外にいくと
