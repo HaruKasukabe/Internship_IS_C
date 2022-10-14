@@ -15,21 +15,21 @@ public class Player_Bullet : MonoBehaviour
     public GameObject Bulletobj;
     // ’e‚ğ¶¬‚·‚éƒ^ƒCƒ}[
     public int BulletTimer = 60;
-<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
+//<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
 
+//    // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
+//    public int HP;
+
+//    public GameObject obj;
+
+//    // ƒvƒŒƒCƒ„[‘B
+//    public GameObject FamiliarObj01;
+//    public GameObject FamiliarObj02;
+//    public GameObject FamiliarObj03;
+//=======
     // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
     public int HP;
 
-    public GameObject obj;
-
-    // ƒvƒŒƒCƒ„[‘B
-    public GameObject FamiliarObj01;
-    public GameObject FamiliarObj02;
-    public GameObject FamiliarObj03;
-=======
-    // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
-    public int HP;
->>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
     // Œ»İ‚¢‚ég‚¢–‚‚Ì”
     int NumFamiliar = 0;
     // Å‘åg‚¢–‚”
@@ -54,16 +54,11 @@ public class Player_Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
-
-        NumFamiliar = 0;
-=======
         NumFamiliar = 0;
 
         sp = GetComponent<SpriteRenderer>();
 
         ChangeScene = false;
->>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
     }
 
     // Update is called once per frame
@@ -107,26 +102,14 @@ public class Player_Bullet : MonoBehaviour
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
-<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
-            Instantiate(obj,
-                new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
-                Quaternion.identity);
-=======
->>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
 
             Vector2 pos = this.transform.position;
             pos.x += 0.25f;
 
             Instantiate(Bulletobj,
-<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
                 new Vector3(pos.x, this.transform.position.y, this.transform.position.z),
-                                Quaternion.identity);
-=======
-                new Vector3(pos.x,this.transform.position.y,this.transform.position.z),
                 Quaternion.identity);
->>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
         }
-
         // ’e‚É“–‚½‚Á‚½‚ç“_–Å
         if (ChangeScene)
         {

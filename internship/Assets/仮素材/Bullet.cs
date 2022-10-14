@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -51,3 +52,5 @@ public class Bullet : MonoBehaviour
 
     }
 }
+=======
+>>>>>>> 228abb0 (背景スクロール差し替え)
