@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6691906814709101996}
   - component: {fileID: 5028083584262095289}
   - component: {fileID: 2042512702041930204}
+  - component: {fileID: 7319318186527551916}
   m_Layer: 0
   m_Name: Prefab_Enemy
   m_TagString: Enemy
@@ -99,7 +100,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be6f73d2a9327544ab8f844d14c12adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   MoveSpeed: 0.01
+=======
+  MoveSpeed: 0.0025
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae
   NumScore: 100
 --- !u!61 &5028083584262095289
 BoxCollider2D:
@@ -140,3 +145,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1443697602903394456, guid: 6331ce36f985e3844823188f2a713eef, type: 3}
+--- !u!114 &7319318186527551916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010117391161811448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f20679c56f630af418ade9d602a4fdd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MoveSpeed: 0.05

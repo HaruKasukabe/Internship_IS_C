@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Enemy
+  - Bullet
+  - Familia
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae
   layers:
   - Default
   - TransparentFX

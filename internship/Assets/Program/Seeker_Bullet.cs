@@ -21,6 +21,10 @@ public class Seeker_Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ポーズ中は何もしない
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         //一秒経つごとに弾を発射する
         currentTime += Time.deltaTime;
         if (targetTime < currentTime)

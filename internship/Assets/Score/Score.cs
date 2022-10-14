@@ -1,30 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using TMPro;
 
 public class Score : MonoBehaviour
 {
-    // インスペクターでテキストオブジェクトを入れる
-    public GameObject ScoreText;
+    public TextMeshProUGUI ScoreText;
 
     // スコア格納用
     static int score = 0;
 
+    // シーンの初めにスコアを'0'に戻すかのフラグ
+    public bool ScoreReset = true;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        // true ならシーンのはじめに'0'に戻す
+        if (ScoreReset)
+            score = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // オブジェクトからTextコンポーネントを取得
-        Text score_text = ScoreText.GetComponent<Text>();
+        if (ScoreText == null) return;
 
-        // テキストの表示を入れ替える
-        score_text.text = "Score : " + score;
+        ScoreText.SetText("{0}", score);
     }
 
     // スコアを加算したい場所で呼び出す

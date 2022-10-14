@@ -6,10 +6,16 @@ public class Player_Bullet : MonoBehaviour
 {
     // ƒvƒŒƒCƒ„[ˆÚ“®‚Ì•Ï”¶¬
     public float MoveSpeed = 0.01f;
+    // ƒvƒŒƒCƒ„[‚ÌˆÚ“®”ÍˆÍ§ŒÀ
+    public float MaxPosX = 8.0f;
+    public float MinPosX = -8.0f;
+    public float MaxPosY = 4.0f;
+    public float MinPosY = -4.0f;
     // ¶¬‚·‚é’e‚ğ‘I‘ğ
     public GameObject Bulletobj;
     // ’e‚ğ¶¬‚·‚éƒ^ƒCƒ}[
     public int BulletTimer = 60;
+<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
 
     // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
     public int HP;
@@ -20,12 +26,25 @@ public class Player_Bullet : MonoBehaviour
     public GameObject FamiliarObj01;
     public GameObject FamiliarObj02;
     public GameObject FamiliarObj03;
+=======
+    // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
+    public int HP;
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
     // Œ»İ‚¢‚ég‚¢–‚‚Ì”
     int NumFamiliar = 0;
     // Å‘åg‚¢–‚”
     public int Maxfamiliar = 20;
+    
+    // “_–Å
+    //SpriteRenderer
+    SpriteRenderer sp;
+    // üŠú
+    public int FlashingCycle = 30;
+    // ƒJƒEƒ“ƒg
+    private int FlashingCnt = 0;
 
-    int Rand = 0;
+    // ƒV[ƒ“‘JˆÚ‚µ‚Ä‚æ‚¢‚©
+    public static bool ChangeScene = false;
 
     private void Awake()
     {
@@ -35,13 +54,25 @@ public class Player_Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
 
         NumFamiliar = 0;
+=======
+        NumFamiliar = 0;
+
+        sp = GetComponent<SpriteRenderer>();
+
+        ChangeScene = false;
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
     }
 
     // Update is called once per frame
     void Update()
     {
+        // ƒ|[ƒY’†‚Í‰½‚à‚µ‚È‚¢
+        if (Mathf.Approximately(Time.timeScale, 0f))
+            return;
+
         // ’e¶¬ƒ^ƒCƒ}[XV
         BulletTimer++;
         // ƒvƒŒƒCƒ„[ˆÚ“®
@@ -65,51 +96,49 @@ public class Player_Bullet : MonoBehaviour
         {
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
+
+        // ˆÚ“®”ÍˆÍ‚É§ŒÀ‚ğ‚©‚¯‚é
+        var limitPos = transform.position;
+        limitPos.x = Mathf.Clamp(limitPos.x, MinPosX, MaxPosX);
+        limitPos.y = Mathf.Clamp(limitPos.y, MinPosY, MaxPosY);
+        transform.position = limitPos;
+
         // ’e‚ğ¶¬
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
+<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
             Instantiate(obj,
                 new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                 Quaternion.identity);
+=======
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
 
             Vector2 pos = this.transform.position;
             pos.x += 0.25f;
 
             Instantiate(Bulletobj,
+<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
                 new Vector3(pos.x, this.transform.position.y, this.transform.position.z),
                                 Quaternion.identity);
+=======
+                new Vector3(pos.x,this.transform.position.y,this.transform.position.z),
+                Quaternion.identity);
+>>>>>>> f927fb9698ea03e27e1c60d9d2b61da16eebe6ae:internship/Assets/ä»®ç´ æ/Player_Bullet.cs
         }
 
-    }
-    // ƒvƒŒƒCƒ„[‚ğ‘B
-    public void CreatePlayer()
-    {
-        //Debug.Log("Œ»İg‚¢–‚‚Í"+NumFamiliar+"‚Å‚·");
-        // 20‘Ì–¢–‚È‚ç
-        if (NumFamiliar < Maxfamiliar)
+        // ’e‚É“–‚½‚Á‚½‚ç“_–Å
+        if (ChangeScene)
         {
-            //Debug.Log("g‚¢–‚‚Í" + Maxfamiliar + "ˆÈ‰º‚Å‚·");
-            Vector3 pos = this.transform.position;
-            pos.y = -0.5f;
-            Rand = Random.Range(1, 4);
-            if (Rand == 1)
+            FlashingCnt++;
+            if (FlashingCnt >= FlashingCycle)
             {
-                Instantiate(FamiliarObj01, pos, Quaternion.identity);
+                sp.enabled = !sp.enabled;
+                FlashingCnt = 0;
             }
-            if (Rand == 2)
-            {
-                Instantiate(FamiliarObj02, pos, Quaternion.identity);
-
-            }
-            if (Rand == 3)
-            {
-                Instantiate(FamiliarObj03, pos, Quaternion.identity);
-            }
-            NumFamiliar++;
-            //Debug.Log("g‚¢–‚‚ğ¶¬‚µ‚Ü‚µ‚½");
         }
     }
+  
     // Œ»İ‚Ìg‚¢–‚‚Ì”‚ğæ“¾
     public int GetFamiliarNum()
     {
@@ -132,7 +161,7 @@ public class Player_Bullet : MonoBehaviour
             HP -= 1;
             if (HP <= 0)
             {
-                Destroy(this.gameObject);
+                ChangeScene = true;
             }
         }
     }
