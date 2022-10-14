@@ -5,7 +5,7 @@ using UnityEngine;
 public class Bullet_Mode_Enemy : MonoBehaviour
 {
     // ’e‚ÌˆÚ“®‘¬“x
-    public float MoveSpeed = 0.05f;
+    public float MoveSpeed;
 
     Player_Bullet player_bullet;
 
