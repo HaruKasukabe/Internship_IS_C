@@ -5,13 +5,15 @@ using UnityEngine;
 public class CreateEnemy : MonoBehaviour
 {
     // 敵を生成するタイマー
-    public int CreateTimer = 60;
+    int CreateCout = 0;
     public GameObject Enemy;
     public float EnemyPos;
+    public int CreaterTime = 600;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        CreateCout = 0;
     }
 
     // Update is called once per frame
@@ -21,14 +23,13 @@ public class CreateEnemy : MonoBehaviour
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
 
-        CreateTimer++;
-        if(CreateTimer>=120)
+        CreateCout++;
+        if(CreateCout >= CreaterTime)
         {
-            CreateTimer = 0;
+            CreateCout = 0;
             EnemyPos = Random.Range(-3, 3);
             // EnemyPos = Random.value;
             Instantiate(Enemy, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
-
         }
     }
 }
