@@ -103,12 +103,12 @@ MonoBehaviour:
   MoveSpeed: 0.05
   Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
   BulletTimer: 30
+  HP: 0
+  obj: {fileID: 0}
   FamiliarObj01: {fileID: 6382871507918040862, guid: e920bce5224e43d4bb6f73eb7884328d, type: 3}
   FamiliarObj02: {fileID: 6879942426661114819, guid: 11af81be8a0787a41b5784f49f1ad054, type: 3}
   FamiliarObj03: {fileID: 1907339681764459705, guid: 15952e324b2d3234699c6dbe2bb2cf53, type: 3}
-  NumFamiliar: 0
   Maxfamiliar: 20
-  Rand: 0
 --- !u!114 &5303681046468263337
 MonoBehaviour:
   m_ObjectHideFlags: 0

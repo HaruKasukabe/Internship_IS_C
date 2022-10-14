@@ -10,7 +10,7 @@ public class Seeker_Bullet : MonoBehaviour
     public GameObject seeker;
 
     //一秒ごとに弾を発射するためのもの
-    private float targetTime = 1.0f;
+    private float targetTime = 2.0f;
     private float currentTime = 0;
 
     private void Start()
@@ -28,6 +28,8 @@ public class Seeker_Bullet : MonoBehaviour
             currentTime = 0;
             //敵の座標を変数posに保存
             var pos = this.gameObject.transform.position;
+            var rot = this.gameObject.transform.rotation;
+
             //弾のプレハブを作成
             var t = Instantiate(seeker) as GameObject;
             t.name = "Prefab_Seeker";
@@ -35,11 +37,9 @@ public class Seeker_Bullet : MonoBehaviour
             t.transform.position = pos;
             //敵からプレイヤーに向かうベクトルをつくる
             //プレイヤーの位置から敵の位置（弾の位置）を引く
-            Vector2 vec = player.transform.position - pos;
+            Vector2 vec = (player.transform.position - pos);
             //弾のRigidBody2Dコンポネントのvelocityに先程求めたベクトルを入れて力を加える
             t.GetComponent<Rigidbody2D>().velocity = vec;
-
-            Debug.Log(vec);
         }
     }
 }

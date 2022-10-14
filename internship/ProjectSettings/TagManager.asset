@@ -3,22 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Enemy
-  - Bullet
-<<<<<<< HEAD
-  - E_Bullet
-=======
-  - Familiar
->>>>>>> fc932d55feba288e6d0bdc8b35010a937f195c89
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Game
+  - 
   - Water
   - UI
-  - BackItem
+  - 
   - 
   - 
   - 
