@@ -9,79 +9,24 @@ public class Bullet : MonoBehaviour
     public Enemy enemy;
     public Player_Bullet player_bullet;
 
-    // 3Way’e‚Ìİ’è
-    // Šp“x
-    private float Angle_3Way;
-    // Šp“x‚ÌŠÔŠu
-    private float DevideAngle_3Way = 25.0f;
-    // ˆÚ“®ƒxƒNƒgƒ‹
-    Vector3[] vec_3Way = new Vector3[3];
-    // ŠgU’e‚©‚Ç‚¤‚©‚Ì”»’è
-    string target_3Way = "3Way";
-
-    // 5Way’e‚Ìİ’è
-    // Šp“x
-    private float Angle_5Way;
-    // Šp“x‚ÌŠÔŠu
-    private float DevideAngle_5Way = 36.0f;
-    // ˆÚ“®ƒxƒNƒgƒ‹
-    Vector3[] vec_5Way = new Vector3[5];
-    // ŠgU’e‚©‚Ç‚¤‚©‚Ì”»’è
-    string target_5Way = "5Way";
-
 
     public static float Bullet_Power;
 
     // Start is called before the first frame update
     void Start()
     {
-        float WaySpeedT = -MoveSpeed * 1000;
-        if (this.gameObject.name.Contains(target_3Way))
-        {
-            Angle_3Way = 25.0f;
-            Bullet_Power = 1.0f;
 
-
-            // Šp“x‚ğƒ‰ƒWƒAƒ“‚É•ÏŠ·
-            for (int i = 0; i < Bullet_3Way.makesum; i++)
-            {
-                float rad = Angle_3Way * Mathf.Deg2Rad;
-
-                // ƒ‰ƒWƒAƒ“‚©‚çis•ûŒü‚ğİ’è
-                Vector3 direction = new Vector3(Mathf.Cos(rad), Mathf.Sin(rad), 0);
-                // •ûŒü‚É‘¬“x‚ğŠ|‚¯‡‚í‚¹‚ÄˆÚ“®ƒxƒNƒgƒ‹‚ğ‹‚ß‚é
-                vec_3Way[i] = direction * (WaySpeedT * Time.deltaTime);
-                Angle_3Way -= DevideAngle_3Way;
-            }
-        }
-        WaySpeedT = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //vec_3Way[0] = new Vector3(-0.02f, 0.01f, 0);
-        //vec_3Way[1] = new Vector3(-0.02f, 0.00f, 0);
-        //vec_3Way[2] = new Vector3(-0.02f,-0.01f, 0);
-
         if (this.gameObject.name == "Enemy_Bullet")
         {
             // ’e‚ğˆÚ“®
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
 
-        if (this.gameObject.name.Contains(target_3Way))
-        {
-            for (int i = 0; i < Bullet_3Way.makesum; i++)
-            {
-                string Sum = i.ToString();
-                if (this.gameObject.name.Contains(Sum))
-                {
-                    transform.position += vec_3Way[i];
-                    Debug.Log(vec_3Way[i]);
-                }
-            }
-        }
 
 
         // ƒJƒƒ‰ŠO‚Éo‚½‚çíœ
