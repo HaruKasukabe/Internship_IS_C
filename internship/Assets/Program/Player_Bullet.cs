@@ -104,11 +104,13 @@ public class Player_Bullet : MonoBehaviour
             BulletTimer = 0;
 
             Vector2 pos = this.transform.position;
-            pos.x += 0.25f;
+            pos.x += 1;
+            pos.y -= 0.4f;
 
-            Instantiate(Bulletobj,
-                new Vector3(pos.x, this.transform.position.y, this.transform.position.z),
+            var Bullet  = Instantiate(Bulletobj,
+                new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
+            Bullet.name = "Player_Bullet";
         }
         // ’e‚É“–‚½‚Á‚½‚ç“_–Å
         if (ChangeScene)
