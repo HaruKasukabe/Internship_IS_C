@@ -15,8 +15,15 @@ public class Player_Bullet : MonoBehaviour
     public GameObject Bulletobj;
     // 弾を生成するタイマー
     public int BulletTimer = 60;
-    // プレイヤーの体力
-    public int HP;
+//    // プレイヤーの体力
+//    public int HP;
+
+//    public GameObject obj;
+
+//    // プレイヤー増殖
+//    public GameObject FamiliarObj01;
+//    public GameObject FamiliarObj02;
+//    public GameObject FamiliarObj03;
     // 現在いる使い魔の数
     int NumFamiliar = 0;
     // 最大使い魔数
@@ -42,6 +49,7 @@ public class Player_Bullet : MonoBehaviour
     void Start()
     {
         NumFamiliar = 0;
+
         sp = GetComponent<SpriteRenderer>();
         ChangeScene = false;
     }
@@ -88,13 +96,14 @@ public class Player_Bullet : MonoBehaviour
         {
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
-            pos.x += 0.25f;
+            pos.x += 1;
+            pos.y -= 0.4f;
 
-            Instantiate(Bulletobj,
-                new Vector3(pos.x, this.transform.position.y, this.transform.position.z),
-                                Quaternion.identity);
+            var Bullet  = Instantiate(Bulletobj,
+                new Vector3(pos.x, pos.y, this.transform.position.z),
+                Quaternion.identity);
+            Bullet.name = "Player_Bullet";
         }
-
         // 弾に当たったら点滅
         if (ChangeScene)
         {

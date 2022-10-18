@@ -27,7 +27,10 @@ public class Enemy_Bullet : MonoBehaviour
     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
     Quaternion.identity);
             Bullet.name = "Enemy_Bullet";
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
         }
     }
 }
