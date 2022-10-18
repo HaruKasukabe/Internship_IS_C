@@ -23,22 +23,13 @@ public class Pause : MonoBehaviour
             if (pauseUI.alpha == 0.0f)
             {
                 pauseUI.alpha = 1.0f;
+                Time.timeScale = 0.0f;
             }
             else
             {
                 pauseUI.alpha = 0.0f;
+                Time.timeScale = 1.0f;
             }
-        }
-
-        // ポーズUIが表示されてなければ通常通り進行
-        if (pauseUI.alpha == 0.0f)
-        {
-            Time.timeScale = 1.0f;
-        }
-        // ポーズUIが表示されてる時は停止
-        else
-        {
-            Time.timeScale = 0.0f;
         }
     }
 }
