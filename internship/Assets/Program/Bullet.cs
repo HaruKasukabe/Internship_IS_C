@@ -40,11 +40,6 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
-<<<<<<< HEAD
-            //();  // 使い魔開放
-=======
->>>>>>> origin/main
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除

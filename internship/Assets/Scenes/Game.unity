@@ -994,6 +994,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+      propertyPath: FamiliarObj01
+      value: 
+      objectReference: {fileID: 6382871507918040862, guid: e920bce5224e43d4bb6f73eb7884328d, type: 3}
+    - target: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+      propertyPath: FamiliarObj02
+      value: 
+      objectReference: {fileID: 6879942426661114819, guid: 11af81be8a0787a41b5784f49f1ad054, type: 3}
+    - target: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+      propertyPath: FamiliarObj03
+      value: 
+      objectReference: {fileID: 1907339681764459705, guid: 15952e324b2d3234699c6dbe2bb2cf53, type: 3}
     - target: {fileID: 5303681046468263341, guid: ca323946244be754dabd822b3f383c29, type: 3}
       propertyPath: m_Name
       value: Prefab_Player
