@@ -19,6 +19,8 @@ public class Familiar : MonoBehaviour
     Vector2 FixedPosition;                 // 使い魔の定位置
     Vector2 CalculationFPos;               // 計算後の定位置
     int FamiliarNum = -1;                  // 使い魔の個体番号
+    Createfamiliar createFamiliar;         // 使い魔生成スクリプト呼び出し用
+
 
 
     // Start is called before the first frame update
@@ -27,18 +29,20 @@ public class Familiar : MonoBehaviour
         // シーンからPlayerタグのオブジェクトを探してPlayer変数に代入
         Player = GameObject.FindWithTag("Player");
         m_PosFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
+        // Playerタグのオブジェクトから割り当てられているCreateFamiliarを代入
+        createFamiliar = GameObject.FindWithTag("Player").GetComponent<Createfamiliar>();
         // 開放した使い魔の数をリセット
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ポーズ中は何もしない
+		// ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-
+    
         // 捕まっている場合は移動のみ行う
-        if (!AliveFlg)
+        if(!AliveFlg)
         {
             this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
             // 画面外にいくと
@@ -46,6 +50,7 @@ public class Familiar : MonoBehaviour
             {
                 // このオブジェクト削除
                 Destroy(this.gameObject);
+                createFamiliar.SetLimitFamiliar(false);
             }
         }
         
@@ -138,6 +143,7 @@ public class Familiar : MonoBehaviour
         FixedPosition = m_PosFamiliar.GetFamiliarPos(FamiliarNum);
         // 経過時間を61にして自動的に定位置に移動するようにする
         time = 61;
+        createFamiliar.SetLimitFamiliar(false);
     }
 
     // Bulletとの当たり判定

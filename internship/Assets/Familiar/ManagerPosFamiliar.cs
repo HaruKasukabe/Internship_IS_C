@@ -9,8 +9,9 @@ public class ManagerPosFamiliar : MonoBehaviour
     Vector2 Pos1 = new Vector2( -1.00f,  1.5f);  // 1,4,7...プレイヤーの左上
     Vector2 Pos2 = new Vector2( -1.00f, -1.5f);  // 2,5,8...プレイヤーの左下
     Vector2 Pos3 = new Vector2( -1.5f, 0.0f);    // 3,6,9...プレイヤーの後ろ
-    int MaxFamiliar = 21;                        // 最大使い魔数
-    bool[] UseFlg;                               // 開放しているかのフラグ管理
+    int MaxFamiliar = 10;                        // 最大使い魔数
+    bool[] UseFlg;                              // 開放しているかのフラグ管理
+    int NowNumFamiliar = 0;                     // 現在いる使い魔の数
 
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class ManagerPosFamiliar : MonoBehaviour
             {
                 UseFlg[i] = true; // 使用フラグを更新
                 Num = i; //個体番号を設定
+                NowNumFamiliar = Num;
                 break;
             }
             i++; // カウントを更新
@@ -69,5 +71,10 @@ public class ManagerPosFamiliar : MonoBehaviour
         {
             return new Vector2(0.0f, 0.0f);
         }
+    }
+
+    public int GetNumFamiliar()
+    {
+        return NowNumFamiliar;
     }
 }
