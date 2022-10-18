@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c2edce7838c9a9f4aa27384ed62700ff, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0b152020775127e449dcb1b10f8a3bc0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -104,10 +104,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 0.05
+  MaxPosX: 8
+  MinPosX: -8
+  MaxPosY: 4
+  MinPosY: -4
   Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
   BulletTimer: 30
   HP: 0
+  FamiliarObj01: {fileID: 0}
+  FamiliarObj02: {fileID: 0}
+  FamiliarObj03: {fileID: 0}
   Maxfamiliar: 20
+  FlashingCycle: 30
 --- !u!114 &5303681046468263337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 4010117391161811448, guid: 3ae3e3b6b4daf1b49bbd675061ab2995, type: 3}
   EnemyPos: 0
-  CreateTime: 600
+  CreaterTime: 600
 --- !u!50 &-6977844467893821709
 Rigidbody2D:
   serializedVersion: 4
@@ -161,7 +169,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.17, y: 6.75}
+    oldSize: {x: 5.12, y: 5.12}
     newSize: {x: 6.17, y: 6.75}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

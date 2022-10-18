@@ -816,6 +816,9 @@ MonoBehaviour:
   Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
   BulletTimer: 60
   HP: 0
+  FamiliarObj01: {fileID: 0}
+  FamiliarObj02: {fileID: 0}
+  FamiliarObj03: {fileID: 0}
   Maxfamiliar: 20
   FlashingCycle: 30
 --- !u!1 &1479776153

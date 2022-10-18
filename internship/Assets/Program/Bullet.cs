@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.name == "Player_Bullet")
+        if (this.gameObject.name == "Player_Bullet" || this.gameObject.name == "Familiar_Bullet")
         {
             // ’e‚ðˆÚ“®
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
