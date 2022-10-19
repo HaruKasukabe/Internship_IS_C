@@ -6,15 +6,17 @@ public class Createfamiliar : MonoBehaviour
 {
     // 変数宣言
     public int CreateFamiliarTime = 0; // 生成カウント変数
-    public int MaxFamiliarTime = 120; // この時間になったら使い魔を生成する
+    public int MaxFamiliarTime = 600;  // この時間になったら使い魔を生成する
     public GameObject FamiliarObject1; // 使い魔その1
     public GameObject FamiliarObject2; // 使い魔その2
     public GameObject FamiliarObject3; // 使い魔その3
+    ManagerPosFamiliar m_posFamiliar;  // 使い魔のポジション管理スクリプト呼び出し用
+    bool LimitFamiliarFlg = false;     // フラグがTrueの間は新規使い魔を生成しない
 
     // Start is called before the first frame update
     void Start()
     {
-
+        m_posFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
     }
 
     // Update is called once per frame
@@ -27,7 +29,7 @@ public class Createfamiliar : MonoBehaviour
         // 使い魔を生成するタイマーを更新
         CreateFamiliarTime++;
         // タイマー以上になったら
-        if(CreateFamiliarTime >= MaxFamiliarTime)
+        if(CreateFamiliarTime >= MaxFamiliarTime && m_posFamiliar.GetNumFamiliar() < 9 && !LimitFamiliarFlg)
         {
             // 0以上3未満の整数をランダム生成
             int i = Random.Range(0, 3);
@@ -39,6 +41,13 @@ public class Createfamiliar : MonoBehaviour
             Instantiate(FamiliarObject[i],
                 new Vector3(9.0f, j, 0.0f), Quaternion.identity);
             CreateFamiliarTime = 0;
+            SetLimitFamiliar(true);
         }
+    }
+
+    // 現在囚われの使い魔がいるか確認するために
+    public void SetLimitFamiliar(bool Flg)
+    {
+        LimitFamiliarFlg = Flg;
     }
 }

@@ -13,12 +13,15 @@ public class Familiar : MonoBehaviour
     Vector3 OldPlayerPos;                  // プレイヤーの1フレーム前の座標
     public int MaxFamiliar = 20;           // 開放した使い魔の最大数
     int time;                              // プレイヤーが動いてからの経過時間
-    float MoveSpeed = 0.01f;               // 開放時の移動速度
+    public float NormalMoveSpeed = 0.02f;  // 開放時の移動速度
+    public float CaughtMoveSpeed = 0.01f;  // 捕まったときの移動速度 
     bool Flg = true;                       // プレイヤーと同じ位置にいるか
     ManagerPosFamiliar m_PosFamiliar;      // 使い魔の位置を管理するスクリプトの呼び出し用
     Vector2 FixedPosition;                 // 使い魔の定位置
     Vector2 CalculationFPos;               // 計算後の定位置
     int FamiliarNum = -1;                  // 使い魔の個体番号
+    Createfamiliar createFamiliar;         // 使い魔生成スクリプト呼び出し用
+
 
 
     // Start is called before the first frame update
@@ -27,25 +30,28 @@ public class Familiar : MonoBehaviour
         // シーンからPlayerタグのオブジェクトを探してPlayer変数に代入
         Player = GameObject.FindWithTag("Player");
         m_PosFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
+        // Playerタグのオブジェクトから割り当てられているCreateFamiliarを代入
+        createFamiliar = GameObject.FindWithTag("Player").GetComponent<Createfamiliar>();
         // 開放した使い魔の数をリセット
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ポーズ中は何もしない
+		// ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-
+    
         // 捕まっている場合は移動のみ行う
-        if (!AliveFlg)
+        if(!AliveFlg)
         {
-            this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
+            this.transform.Translate(-CaughtMoveSpeed, 0.0f, 0.0f);
             // 画面外にいくと
             if(!GetComponent<Renderer>().isVisible)
             {
                 // このオブジェクト削除
                 Destroy(this.gameObject);
+                createFamiliar.SetLimitFamiliar(false);
             }
         }
         
@@ -59,9 +65,10 @@ public class Familiar : MonoBehaviour
             {
                 BulletTime = 0; //カウントを0に
                 // 弾オブジェクト生成
-                Instantiate(BulletObject,
+                var Bullet = Instantiate(BulletObject,
                 new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                  Quaternion.identity);
+                Bullet.name = "Familiar_Bullet";
             }
 
             // プレイヤーに追従
@@ -86,22 +93,22 @@ public class Familiar : MonoBehaviour
                 // 使い魔の位置がプレイヤーより右にいる場合
                 if(this.transform.position.x > CalculationFPos.x)
                 {
-                    this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
+                    this.transform.Translate(-NormalMoveSpeed, 0.0f, 0.0f);
                 }
                 // 使い魔の位置がプレイヤーより左にいる場合
                 if (this.transform.position.x < CalculationFPos.x)
                 {
-                    this.transform.Translate( MoveSpeed, 0.0f, 0.0f);
+                    this.transform.Translate(NormalMoveSpeed, 0.0f, 0.0f);
                 }
                 // 使い魔の位置がプレイヤーより上にいる場合
                 if (this.transform.position.y > CalculationFPos.y)
                 {
-                    this.transform.Translate( 0.0f, -MoveSpeed, 0.0f);
+                    this.transform.Translate( 0.0f, -NormalMoveSpeed, 0.0f);
                 }
                 // 使い魔の位置がプレイヤーより下にいる場合
                 if (this.transform.position.y < CalculationFPos.y)
                 {
-                    this.transform.Translate( 0.0f, MoveSpeed, 0.0f);
+                    this.transform.Translate( 0.0f, NormalMoveSpeed, 0.0f);
                 }
             }
             if (( this.transform.position.x == CalculationFPos.x) && (this.transform.position.y== CalculationFPos.y))
@@ -138,6 +145,7 @@ public class Familiar : MonoBehaviour
         FixedPosition = m_PosFamiliar.GetFamiliarPos(FamiliarNum);
         // 経過時間を61にして自動的に定位置に移動するようにする
         time = 61;
+        createFamiliar.SetLimitFamiliar(false);
     }
 
     // Bulletとの当たり判定

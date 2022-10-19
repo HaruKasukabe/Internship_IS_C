@@ -820,8 +820,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f93b61aa70e22041a8f26131fd242a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   obj: {fileID: 1443697602903394456, guid: 6331ce36f985e3844823188f2a713eef, type: 3}
 --- !u!1 &909136621
+=======
+  MoveSpeed: 0.01
+  MaxPosX: 8
+  MinPosX: -8
+  MaxPosY: 4
+  MinPosY: -4
+  Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
+  BulletTimer: 60
+  HP: 0
+  FamiliarObj01: {fileID: 0}
+  FamiliarObj02: {fileID: 0}
+  FamiliarObj03: {fileID: 0}
+  Maxfamiliar: 20
+  FlashingCycle: 30
+--- !u!1 &1479776153
+>>>>>>> d63318420eba6d60b43e1109561e321b3f07d8e0
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

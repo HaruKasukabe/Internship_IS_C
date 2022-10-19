@@ -15,21 +15,12 @@ public class Player_Bullet : MonoBehaviour
     public GameObject Bulletobj;
     // 弾を生成するタイマー
     public int BulletTimer = 60;
-//<<<<<<< HEAD:internship/Assets/Program/Player_Bullet.cs
-
-//    // プレイヤーの体力
-//    public int HP;
-
-//    public GameObject obj;
-
-//    // プレイヤー増殖
-//    public GameObject FamiliarObj01;
-//    public GameObject FamiliarObj02;
-//    public GameObject FamiliarObj03;
-//=======
     // プレイヤーの体力
     public int HP;
-
+    // プレイヤー増殖
+    public GameObject FamiliarObj01;
+    public GameObject FamiliarObj02;
+    public GameObject FamiliarObj03;
     // 現在いる使い魔の数
     int NumFamiliar = 0;
     // 最大使い魔数
@@ -61,7 +52,6 @@ public class Player_Bullet : MonoBehaviour
         NumFamiliar = 0;
 
         sp = GetComponent<SpriteRenderer>();
-
         ChangeScene = false;
 
         // コンポーネント取得　
@@ -109,7 +99,6 @@ public class Player_Bullet : MonoBehaviour
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
             BulletTimer = 0;
-
             Vector2 pos = this.transform.position;
             pos.x += 1;
             pos.y -= 0.4f;
@@ -131,20 +120,6 @@ public class Player_Bullet : MonoBehaviour
             }
         }
     }
-  
-    // 現在の使い魔の数を取得
-    public int GetFamiliarNum()
-    {
-        Debug.Log("使い魔を貸しました");
-        return NumFamiliar;
-    }
-    // 使い魔を1匹減らす
-    public void SetFamiliarNum()
-    {
-        Debug.Log("使い魔が減りました");
-        NumFamiliar--;
-    }
-
 
     void OnTriggerEnter2D(Collider2D other)
     {

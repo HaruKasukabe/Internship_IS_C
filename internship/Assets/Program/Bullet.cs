@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.gameObject.name == "Player_Bullet")
+        if (this.gameObject.name == "Player_Bullet" || this.gameObject.name == "Familiar_Bullet")
         {
             // 弾を移動
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
@@ -40,7 +40,6 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
