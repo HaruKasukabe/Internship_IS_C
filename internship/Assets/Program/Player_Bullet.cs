@@ -46,6 +46,10 @@ public class Player_Bullet : MonoBehaviour
     // シーン遷移してよいか
     public static bool ChangeScene = false;
 
+    // 射撃のSE
+    public AudioClip ShotBullet;
+    AudioSource audioSource;
+
     private void Awake()
     {
         NumFamiliar = 0;
@@ -59,6 +63,9 @@ public class Player_Bullet : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
 
         ChangeScene = false;
+
+        // コンポーネント取得　
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -111,6 +118,7 @@ public class Player_Bullet : MonoBehaviour
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
             Bullet.name = "Player_Bullet";
+            audioSource.PlayOneShot(ShotBullet);
         }
         // 弾に当たったら点滅
         if (ChangeScene)
