@@ -107,7 +107,7 @@ public class Player_Bullet : MonoBehaviour
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
             Bullet.name = "Player_Bullet";
-            audioSource.PlayOneShot(ShotBullet);
+            audioSource.PlayOneShot(ShotBullet, VolumeControl.SE_Volume);
         }
         // ’e‚É“–‚½‚Á‚½‚ç“_–Å
         if (ChangeScene)
