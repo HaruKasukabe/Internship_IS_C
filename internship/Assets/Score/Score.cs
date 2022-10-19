@@ -8,7 +8,7 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI ScoreText;
 
     // スコア格納用
-    static int score = 0;
+    public static int score = 0;
 
     // シーンの初めにスコアを'0'に戻すかのフラグ
     public bool ScoreReset = true;
