@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // 敵の移動速度
-    public float MoveSpeed = 0.0025f;
+     float MoveSpeed = 0.000001f;
     // このエネミーのスコア
     public int NumScore = 100;
     // 仮で敵のスコアをランダムで生成

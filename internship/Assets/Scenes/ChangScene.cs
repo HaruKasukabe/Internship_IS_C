@@ -21,7 +21,7 @@ public class ChangScene : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 // ƒQ[ƒ€ ƒV[ƒ“‚ÉˆÚ“®
-                SceneManager.LoadScene("Test Sugiura");
+                SceneManager.LoadScene("Game");
             }
         }
 

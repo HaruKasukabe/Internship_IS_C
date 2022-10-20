@@ -34,8 +34,6 @@ public class ULT_Attack : MonoBehaviour
 
         if (cnt >= 30)
         {
-            Player_ULT.AddUltCnt();
-
             if (collision.gameObject.tag == "Enemy")
             {
                 Debug.Log("Enemy ULT Hit");
