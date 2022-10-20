@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy_HP : MonoBehaviour
 {
-    public float HP;
+    public float HP = 3;
     // Start is called before the first frame update
     void Start()
     {

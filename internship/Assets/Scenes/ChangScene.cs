@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// メインのゲームシーンで使うときは
+// Test Sugiura の部分を Game に書き換えてね
+
 public class ChangScene : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -33,6 +36,14 @@ public class ChangScene : MonoBehaviour
             {
                 // 3秒後にシーン遷移
                 Invoke("ChengeToResult", 3.0f);
+            }
+
+            // デバッグ用
+            // Spaceキーで
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                // リザルト シーンに移動
+                SceneManager.LoadScene("Result");
             }
         }
 

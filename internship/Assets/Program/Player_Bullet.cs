@@ -34,8 +34,15 @@ public class Player_Bullet : MonoBehaviour
     // カウント
     private int FlashingCnt = 0;
 
+    // 消滅エフェクト
+    public GameObject DeathEffect;
+
     // シーン遷移してよいか
     public static bool ChangeScene = false;
+
+    // 射撃のSE
+    public AudioClip ShotBullet;
+    AudioSource audioSource;
 
     private void Awake()
     {
@@ -49,6 +56,9 @@ public class Player_Bullet : MonoBehaviour
 
         sp = GetComponent<SpriteRenderer>();
         ChangeScene = false;
+
+        // コンポーネント取得　
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -100,6 +110,7 @@ public class Player_Bullet : MonoBehaviour
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
             Bullet.name = "Player_Bullet";
+            audioSource.PlayOneShot(ShotBullet, VolumeControl.SE_Volume);
         }
         // 弾に当たったら点滅
         if (ChangeScene)
@@ -110,7 +121,18 @@ public class Player_Bullet : MonoBehaviour
                 sp.enabled = !sp.enabled;
                 FlashingCnt = 0;
             }
+
+            Invoke("MeDestroy", 1.0f);
         }
+    }
+
+    private void MeDestroy()
+    {
+        Destroy(this.gameObject);
+
+        Instantiate(DeathEffect,
+                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                    Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D other)
