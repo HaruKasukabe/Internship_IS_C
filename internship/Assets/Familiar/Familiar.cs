@@ -30,6 +30,9 @@ public class Familiar : MonoBehaviour
     bool[] SavePosFlg;                          // 使い魔の救出後の位置が定位置か調べるフラグ
     int SaveTimer;                              // 助けた際のタイマー
 
+    // 射撃のSE
+    public AudioClip ShotSE;
+    AudioSource audioSource;
 
     // ===============================
     // 初期化関数
@@ -51,7 +54,11 @@ public class Familiar : MonoBehaviour
         {
             SavePosFlg[i] = false;
         }
-    }
+        // 開放した使い魔の数をリセット
+
+        // コンポーネント取得　
+        audioSource = GetComponent<AudioSource>();
+
 
     // ===============================
     // 更新関数
@@ -150,6 +157,7 @@ public class Familiar : MonoBehaviour
                     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                      Quaternion.identity);
                     Bullet.name = "Familiar_Bullet";
+                    audioSource.PlayOneShot(ShotSE);
                 }
 
                 // プレイヤーに追従

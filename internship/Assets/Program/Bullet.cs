@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Enemy enemy;
     public Player_Bullet player_bullet;
 
+    public static bool ScoreFlag;
 
     public static float Bullet_Power;
 
@@ -31,6 +32,11 @@ public class Bullet : MonoBehaviour
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
 
+        if (ScoreFlag)
+        {
+            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            ScoreFlag = false;
+        }
 
 
         // カメラ外に出たら削除
@@ -39,6 +45,7 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+<<<<<<< HEAD
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -50,4 +57,6 @@ public class Bullet : MonoBehaviour
             Player_ULT.AddUltCnt();
         }
     }
+=======
+>>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1
 }
