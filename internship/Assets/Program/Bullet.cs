@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour
     public Enemy enemy;
     public Player_Bullet player_bullet;
 
+    public static bool ScoreFlag;
 
     public static float Bullet_Power;
 
@@ -27,22 +28,17 @@ public class Bullet : MonoBehaviour
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
 
+        if (ScoreFlag)
+        {
+            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            ScoreFlag = false;
+        }
 
 
         // カメラ外に出たら削除
         if (!GetComponent<Renderer>().isVisible)
         {
             Destroy(this.gameObject);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Enemy")
-        {
-            Score.AddScore(enemy.GetEnemyScore());// スコア加算
-            Destroy(this.gameObject);      // バレットを削除
-            Destroy(collision.gameObject); // 敵を削除
         }
     }
 }

@@ -38,7 +38,9 @@ public class Player_Bullet : MonoBehaviour
     public static bool ChangeScene = false;
 
     // ŽËŒ‚‚ÌSE
-    public AudioClip ShotBullet;
+    public AudioClip ShotSE;
+    // ”í’e‚ÌSE
+    public AudioClip DamageSE;
     AudioSource audioSource;
 
     private void Awake()
@@ -98,16 +100,16 @@ public class Player_Bullet : MonoBehaviour
         // ’e‚ð¶¬
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
+            audioSource.PlayOneShot(ShotSE);
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;
             pos.y -= 0.4f;
 
-            var Bullet  = Instantiate(Bulletobj,
+            var Bullet = Instantiate(Bulletobj,
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
             Bullet.name = "Player_Bullet";
-            audioSource.PlayOneShot(ShotBullet);
         }
         // ’e‚É“–‚½‚Á‚½‚ç“_–Å
         if (ChangeScene)

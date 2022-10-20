@@ -7,10 +7,19 @@ public class Pause : MonoBehaviour
 {
     public TextMeshProUGUI pauseUI;
 
+
+    // 決定のSE
+    public AudioClip Des_SE;
+    AudioSource audioSource;
+
+
     // Start is called before the first frame update
     void Start()
     {
         pauseUI.alpha = 0.0f;
+
+        // コンポーネント取得　
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -19,6 +28,7 @@ public class Pause : MonoBehaviour
         // 'P'キーでポーズ画面切替
         if (Input.GetKeyDown(KeyCode.P))
         {
+            audioSource.PlayOneShot(Des_SE);
             // ポーズUIのアルファ値を変える
             if (pauseUI.alpha == 0.0f)
             {

@@ -22,6 +22,9 @@ public class Familiar : MonoBehaviour
     int FamiliarNum = -1;                  // 使い魔の個体番号
     Createfamiliar createFamiliar;         // 使い魔生成スクリプト呼び出し用
 
+    // 射撃のSE
+    public AudioClip ShotSE;
+    AudioSource audioSource;
 
 
     // Start is called before the first frame update
@@ -33,6 +36,9 @@ public class Familiar : MonoBehaviour
         // Playerタグのオブジェクトから割り当てられているCreateFamiliarを代入
         createFamiliar = GameObject.FindWithTag("Player").GetComponent<Createfamiliar>();
         // 開放した使い魔の数をリセット
+
+        // コンポーネント取得　
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -59,16 +65,18 @@ public class Familiar : MonoBehaviour
         if (AliveFlg)
         {
             BulletTime++; // 弾発射カウントをプラス
-            
+
             // 一定時間以上になったら弾を発射
             if (BulletTime >= 30 && Input.GetKey(KeyCode.Z))
             {
+
                 BulletTime = 0; //カウントを0に
                 // 弾オブジェクト生成
                 var Bullet = Instantiate(BulletObject,
                 new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                  Quaternion.identity);
                 Bullet.name = "Familiar_Bullet";
+                audioSource.PlayOneShot(ShotSE);
             }
 
             // プレイヤーに追従
