@@ -735,9 +735,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96e9d1527c879fb49944baa15515b337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ultimate: {fileID: 5667685594442378723, guid: 4c1d0e50026d52a4d93ab8b029653544, type: 3}
+  Ultimate: {fileID: 1876159338315913203, guid: 667aa0b7084e17d46a551b49dc59dcbe, type: 3}
+  UltBreak: {fileID: 5667685594442378723, guid: 4c1d0e50026d52a4d93ab8b029653544, type: 3}
   readyUI: {fileID: 1681299358}
-  ult_MaxCnt: 30
+  ult_MaxCnt: 10
 --- !u!114 &1530878884
 MonoBehaviour:
   m_ObjectHideFlags: 0

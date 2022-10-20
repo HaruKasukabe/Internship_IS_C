@@ -6,6 +6,8 @@ public class ULT_Attack : MonoBehaviour
 {
     // 生成されてからのフレームをカウント
     private int cnt;
+    // オブジェクト消滅時に時間動かしていい？
+    public bool TimeMove = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,29 +18,26 @@ public class ULT_Attack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ポーズ中は何もしない
-        if (Mathf.Approximately(Time.timeScale, 0f))
-            return;
-
         cnt++;
 
-        if (cnt >= 60)
+        if (cnt >= 370)
         {
             Destroy(this.gameObject);
+            if(TimeMove)
+                Time.timeScale = 1.0f;
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("ULT Hit");
-
-        if (cnt >= 30)
+        if (cnt >= 360)
         {
             if (collision.gameObject.tag == "Enemy")
             {
                 Debug.Log("Enemy ULT Hit");
                 Destroy(collision.gameObject);
                 Score.AddScore(10);
+                Player_ULT.AddUltCnt();
             }
 
             //if (collision.gameObject.tag == "ene1")

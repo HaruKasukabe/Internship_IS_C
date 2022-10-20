@@ -6,7 +6,8 @@ using TMPro;
 public class Player_ULT : MonoBehaviour
 {
     private RectTransform obj;
-    public GameObject ultimate;
+    public GameObject Ultimate;
+    public GameObject UltBreak;
     public TextMeshProUGUI readyUI;
 
     // 必殺技までのカウント
@@ -18,6 +19,13 @@ public class Player_ULT : MonoBehaviour
     // 汎用
     private float tmp;
 
+    // 必殺技開始位置
+    private Vector2 ultPos;
+    // 必殺技を撃ってからのカウント
+    private int CreateTimer;
+    // 今何列目？
+    private int BombNum;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,16 +36,13 @@ public class Player_ULT : MonoBehaviour
         ult_cnt = 0.0f;
         play = false;
         tmp = ult_cnt;
+
+        CreateTimer = 120;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ポーズ中は何もしない
-        if (Mathf.Approximately(Time.timeScale, 0f))
-            return;
-
-
         if (ult_MaxCnt <= ult_cnt)
         {
             readyUI.alpha = 1.0f;
@@ -46,6 +51,7 @@ public class Player_ULT : MonoBehaviour
         {
             readyUI.alpha = 0.0f;
         }
+
 
         if (!play)
         {
@@ -74,25 +80,32 @@ public class Player_ULT : MonoBehaviour
             }
 
             // tmpが0以下になったら
-            if(tmp <= 0)
+            if (tmp <= 0)
             {
                 tmp = 0.0f;
-                play = false;
+                CreateExplosion();
             }
         }
 
         // カウントがいっぱいだったら
-        if(ult_MaxCnt <= ult_cnt)
+        if (ult_MaxCnt <= ult_cnt)
         {
-            if(Input.GetKeyDown(KeyCode.X))
+            // 停止中は押せないようにする
+            if (Mathf.Approximately(Time.timeScale, 1f))
             {
-                Instantiate(ultimate, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
-                play = true;
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    Time.timeScale = 0.0f;
+                    play = true;
+                    ultPos = new Vector2(-7.5f, 4.5f);
+                    CreateTimer = 120;
+                    BombNum = 0;
+                }
             }
         }
 
         // オブジェクトの大きさを反映する
-        obj.sizeDelta = new Vector2(tmp * 15.0f, 70.0f);
+        obj.sizeDelta = new Vector2(tmp * (450 / ult_MaxCnt), obj.sizeDelta.y);
     }
 
     // 必殺技カウントを加算したい場所で呼び出す
@@ -100,6 +113,32 @@ public class Player_ULT : MonoBehaviour
     public static void AddUltCnt()
     {
         // 値を加算
-        ult_cnt += 10.0f;
+        ult_cnt++;
+    }
+
+    // 必殺技の動き
+    private void CreateExplosion()
+    {
+        if (BombNum < 6)
+        {
+            CreateTimer++;
+            if (CreateTimer >= 120)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    Instantiate(Ultimate, new Vector3(ultPos.x, ultPos.y, 0.0f), Quaternion.identity);
+                    ultPos.y -= 3.0f;
+                }
+                ultPos.x += 3.0f;
+                ultPos.y = 4.5f;
+                BombNum++;
+                CreateTimer = 0;
+            }
+        }
+        else
+        {
+            play = false;
+            Instantiate(UltBreak, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+        }
     }
 }
