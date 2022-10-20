@@ -135,6 +135,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5303681046468263337, guid: ca323946244be754dabd822b3f383c29, type: 3}
+      propertyPath: Enemy
+      value: 
+      objectReference: {fileID: 4010117391161811448, guid: a12db9f1243cd1448b6009f2347273fb, type: 3}
+    - target: {fileID: 5303681046468263337, guid: ca323946244be754dabd822b3f383c29, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
@@ -142,6 +146,10 @@ PrefabInstance:
       propertyPath: ShotBullet
       value: 
       objectReference: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
+    - target: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+      propertyPath: DeathEffect
+      value: 
+      objectReference: {fileID: 1748626068085943692, guid: 97b3199480aa5e94ca0d475d85a2d3eb, type: 3}
     - target: {fileID: 5303681046468263341, guid: ca323946244be754dabd822b3f383c29, type: 3}
       propertyPath: m_Name
       value: Prefab_Player
