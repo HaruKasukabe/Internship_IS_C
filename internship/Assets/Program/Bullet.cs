@@ -45,7 +45,6 @@ public class Bullet : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-<<<<<<< HEAD
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -57,6 +56,4 @@ public class Bullet : MonoBehaviour
             Player_ULT.AddUltCnt();
         }
     }
-=======
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1
 }

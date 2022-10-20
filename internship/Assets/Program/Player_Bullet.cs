@@ -17,15 +17,6 @@ public class Player_Bullet : MonoBehaviour
     public int BulletTimer = 60;
     // プレイヤーの体力
     public int HP;
-    // プレイヤー増殖
-    public GameObject FamiliarObj01;
-    public GameObject FamiliarObj02;
-    public GameObject FamiliarObj03;
-    // 現在いる使い魔の数
-    int NumFamiliar = 0;
-    // 最大使い魔数
-    public int Maxfamiliar = 20;
-    
     // 点滅
     //SpriteRenderer
     SpriteRenderer sp;
@@ -46,16 +37,9 @@ public class Player_Bullet : MonoBehaviour
     public AudioClip DamageSE;
     AudioSource audioSource;
 
-    private void Awake()
-    {
-        NumFamiliar = 0;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
-        NumFamiliar = 0;
-
         sp = GetComponent<SpriteRenderer>();
         ChangeScene = false;
 
@@ -103,7 +87,7 @@ public class Player_Bullet : MonoBehaviour
         // 弾を生成
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
-            audioSource.PlayOneShot(ShotSE);
+            // audioSource.PlayOneShot(ShotSE);
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;
@@ -113,10 +97,7 @@ public class Player_Bullet : MonoBehaviour
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
             Bullet.name = "Player_Bullet";
-<<<<<<< HEAD
-            audioSource.PlayOneShot(ShotBullet, VolumeControl.SE_Volume);
-=======
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1
+            Debug.Log("弾を生成しました");
         }
         // 弾に当たったら点滅
         if (ChangeScene)

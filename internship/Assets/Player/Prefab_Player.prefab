@@ -8,18 +8,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD:internship/Assets/Player/Prefab_Player.prefab
-  - component: {fileID: 5303681046468263342}
-  - component: {fileID: 5303681046468263343}
-  - component: {fileID: 5303681046468263340}
-  - component: {fileID: 5303681046468263337}
-  - component: {fileID: -6977844467893821709}
-  - component: {fileID: 5303681046468263336}
-  - component: {fileID: -348049141419024295}
-  - component: {fileID: 3048653457848079497}
-  - component: {fileID: -1038718410610091068}
-  - component: {fileID: 8250944882204010149}
-=======
   - component: {fileID: 7187738043267974292}
   - component: {fileID: 7187738043267974293}
   - component: {fileID: 7187738043267974294}
@@ -29,8 +17,6 @@ GameObject:
   - component: {fileID: 7187738043267974290}
   - component: {fileID: 7187738043267974291}
   - component: {fileID: 7187738043267974284}
-  - component: {fileID: 7187738043267974285}
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1:internship/Assets/仮素材/Prefab_Player.prefab
   m_Layer: 0
   m_Name: Prefab_Player
   m_TagString: Player
@@ -130,14 +116,10 @@ MonoBehaviour:
   FamiliarObj03: {fileID: 1907339681764459705, guid: 15952e324b2d3234699c6dbe2bb2cf53, type: 3}
   Maxfamiliar: 20
   FlashingCycle: 30
-<<<<<<< HEAD:internship/Assets/Player/Prefab_Player.prefab
-  ShotBullet: {fileID: 0}
---- !u!114 &5303681046468263337
-=======
+  DeathEffect: {fileID: 1748626068085943692, guid: 97b3199480aa5e94ca0d475d85a2d3eb, type: 3}
   ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
-  Damage: {fileID: 0}
+  DamageSE: {fileID: 8300000, guid: 2c1dc3b596fc1964b9f21bc26d937776, type: 3}
 --- !u!114 &7187738043267974295
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1:internship/Assets/仮素材/Prefab_Player.prefab
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,121 +223,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce559afd256a8b844ada0efe64965e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< HEAD:internship/Assets/Player/Prefab_Player.prefab
---- !u!95 &8250944882204010149
-Animator:
-  serializedVersion: 4
-=======
---- !u!82 &7187738043267974285
-AudioSource:
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1:internship/Assets/仮素材/Prefab_Player.prefab
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD:internship/Assets/Player/Prefab_Player.prefab
-  m_GameObject: {fileID: 5303681046468263341}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: a33977a861fbfb04fa012d8674b4b122, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
-=======
-  m_GameObject: {fileID: 7187738043267974279}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
->>>>>>> 59293383f753c0e999b7706b086e342ff0d439c1:internship/Assets/仮素材/Prefab_Player.prefab

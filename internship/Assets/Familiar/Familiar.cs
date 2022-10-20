@@ -50,7 +50,7 @@ public class Familiar : MonoBehaviour
         // 変数の配列の数を指定
         SavePosFlg = new bool[4];
         // 変数の中を初期化
-        for(int i=0;i<4;++i)
+        for (int i = 0; i < 4; ++i)
         {
             SavePosFlg[i] = false;
         }
@@ -58,17 +58,17 @@ public class Familiar : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
-
+    }
 
     // ===============================
     // 更新関数
     // ===============================
     void Update()
     {
-		// *****ポーズ中は何もしない*****
+        // *****ポーズ中は何もしない*****
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-        Debug.Log("現在の使い魔のステータスです"+status);
+        Debug.Log("現在の使い魔のステータスです" + status);
         // *****テータスに応じて処理を変える*****
         switch (status)
         {
@@ -131,13 +131,13 @@ public class Familiar : MonoBehaviour
                     SavePosFlg[3] = true;
                 }
 
-                for (int i = 0,j=0;i<4;++i)
+                for (int i = 0, j = 0; i < 4; ++i)
                 {
                     if (SavePosFlg[i])
                     {
                         j++;
                     }
-                    if (j>=2 && SaveTimer<=0)
+                    if (j >= 2 && SaveTimer <= 0)
                     {
                         status = Status.Follow;
                     }
@@ -264,5 +264,4 @@ public class Familiar : MonoBehaviour
             }
         }
     }
-
 }
