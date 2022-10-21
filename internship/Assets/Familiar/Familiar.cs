@@ -157,7 +157,7 @@ public class Familiar : MonoBehaviour
                     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                      Quaternion.identity);
                     Bullet.name = "Familiar_Bullet";
-                    audioSource.PlayOneShot(ShotSE);
+                    audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume / 2.0f);
                 }
 
                 // ÉvÉåÉCÉÑÅ[Ç…í«è]

@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// メインのゲームシーンで使うときは
-// Test Sugiura の部分を Game に書き換えてね
-
 public class BGM_Manager : MonoBehaviour
 {
     static public BGM_Manager instance;
@@ -34,7 +31,7 @@ public class BGM_Manager : MonoBehaviour
             TitleBGM.Play();
         }
         // ゲーム シーン
-        if (SceneManager.GetActiveScene().name == "Test Sugiura")
+        if (SceneManager.GetActiveScene().name == "Game")
         {
             GameBGM.Play();
         }
@@ -58,21 +55,21 @@ public class BGM_Manager : MonoBehaviour
     void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
     {
         // タイトル -> ゲーム
-        if (beforeScene == "Title" && nextScene.name == "Test Sugiura")
+        if (beforeScene == "Title" && nextScene.name == "Game")
         {
             Debug.Log(beforeScene + "->" + nextScene.name);
             TitleBGM.Stop();
             GameBGM.Play();
         }
         // ゲーム -> リザルト
-        if (beforeScene == "Test Sugiura" && nextScene.name == "Result")
+        if (beforeScene == "Game" && nextScene.name == "Result")
         {
             Debug.Log(beforeScene + "->" + nextScene.name);
             GameBGM.Stop();
             ResultBGM.Play();
         }
         // リザルト -> ゲーム
-        if (beforeScene == "Result" && nextScene.name == "Test Sugiura")
+        if (beforeScene == "Result" && nextScene.name == "Game")
         {
             Debug.Log(beforeScene + "->" + nextScene.name);
             ResultBGM.Stop();

@@ -87,7 +87,7 @@ public class Player_Bullet : MonoBehaviour
         // ’e‚ð¶¬
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
-            // audioSource.PlayOneShot(ShotSE);
+            audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume);
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;

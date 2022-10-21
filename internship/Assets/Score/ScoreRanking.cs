@@ -62,11 +62,11 @@ public class ScoreRanking : MonoBehaviour
         if (nextScene.name == "Title")
         {
             once = true;
-            obj.transform.position = new Vector3(960.0f, 540.0f, 0.0f);
+            obj.transform.position = new Vector3(460.0f, 740.0f, 0.0f);
         }
         else
         {
-            obj.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
+            obj.transform.position = new Vector3(-1000.0f, 740.0f, 0.0f);
         }
     }
 
@@ -80,7 +80,7 @@ public class ScoreRanking : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
-            Debug.Log("BGM_ManagerÇè¡ÇµÇ‹ÇµÇΩ");
+            Debug.Log("ScoreRankingÇè¡ÇµÇ‹ÇµÇΩ");
         }
     }
 }

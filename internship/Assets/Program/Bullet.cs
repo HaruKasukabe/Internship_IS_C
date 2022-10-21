@@ -9,8 +9,6 @@ public class Bullet : MonoBehaviour
     public Enemy enemy;
     public Player_Bullet player_bullet;
 
-    public static bool ScoreFlag;
-
     public static float Bullet_Power;
 
     // Start is called before the first frame update
@@ -25,19 +23,12 @@ public class Bullet : MonoBehaviour
         // ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-
+        
         if (this.gameObject.name == "Player_Bullet" || this.gameObject.name == "Familiar_Bullet")
         {
             // 弾を移動
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
         }
-
-        if (ScoreFlag)
-        {
-            Score.AddScore(enemy.GetEnemyScore());// スコア加算
-            ScoreFlag = false;
-        }
-
 
         // カメラ外に出たら削除
         if (!GetComponent<Renderer>().isVisible)
@@ -50,9 +41,10 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
+            Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Player_ULT.AddUltCnt();
         }
     }
