@@ -7,7 +7,7 @@ public class Player_ULT : MonoBehaviour
 {
     private RectTransform obj;
     public GameObject Ultimate;
-    public GameObject UltBreak;
+    public GameObject UltLast;
     public TextMeshProUGUI readyUI;
 
     // 必殺技までのカウント
@@ -30,7 +30,6 @@ public class Player_ULT : MonoBehaviour
     void Start()
     {
         obj = GetComponent<RectTransform>();
-
         readyUI.alpha = 0.0f;
 
         ult_cnt = 0.0f;
@@ -109,7 +108,6 @@ public class Player_ULT : MonoBehaviour
     }
 
     // 必殺技カウントを加算したい場所で呼び出す
-    // Player_ULT.AddUltCnt();
     public static void AddUltCnt()
     {
         // 値を加算
@@ -138,7 +136,7 @@ public class Player_ULT : MonoBehaviour
         else
         {
             play = false;
-            Instantiate(UltBreak, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            Instantiate(UltLast, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
         }
     }
 }

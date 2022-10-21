@@ -4,9 +4,6 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-// メインのゲームシーンで使うときは
-// Test Sugiura の部分を Game に書き換えてね
-
 public class VolumeControl : MonoBehaviour
 {
     // 音量
@@ -61,7 +58,7 @@ public class VolumeControl : MonoBehaviour
             Select_Bar.transform.position = new Vector3(BGM_Gauge.position.x - 100.0f, BGM_Gauge.position.y, 0.0f);
         }
         // 今のシーンが「ゲーム」なら
-        if (SceneManager.GetActiveScene().name == "Test Sugiura")
+        if (SceneManager.GetActiveScene().name == "Game")
         {
             Select_Bar.transform.position = new Vector3(BGM_Gauge.position.x - 1.0f, BGM_Gauge.position.y, 0.0f);
         }
@@ -146,7 +143,7 @@ public class VolumeControl : MonoBehaviour
                 Select_Bar.transform.position = new Vector3(BGM_Gauge.position.x - 100.0f, BGM_Gauge.position.y, 0.0f);
             }
             // 今のシーンが「ゲーム」なら
-            if (SceneManager.GetActiveScene().name == "Test Sugiura")
+            if (SceneManager.GetActiveScene().name == "Game")
             {
                 // 移動
                 Select_Bar.transform.position = new Vector3(BGM_Gauge.position.x - 1.0f, BGM_Gauge.position.y, 0.0f);
@@ -165,7 +162,7 @@ public class VolumeControl : MonoBehaviour
                 Select_Bar.transform.position = new Vector3(SE_Gauge.position.x - 100.0f, SE_Gauge.position.y, 0.0f);
             }
             // 今のシーンが「ゲーム」なら
-            if (SceneManager.GetActiveScene().name == "Test Sugiura")
+            if (SceneManager.GetActiveScene().name == "Game")
             {
                 // 移動
                 Select_Bar.transform.position = new Vector3(SE_Gauge.position.x - 1.0f, SE_Gauge.position.y, 0.0f);

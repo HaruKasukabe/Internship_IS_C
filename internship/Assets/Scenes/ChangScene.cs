@@ -3,9 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-// メインのゲームシーンで使うときは
-// Test Sugiura の部分を Game に書き換えてね
-
 public class ChangScene : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -29,7 +26,7 @@ public class ChangScene : MonoBehaviour
         }
 
         // 今のシーンが「ゲーム」なら
-        if (SceneManager.GetActiveScene().name == "Test Sugiura")
+        if (SceneManager.GetActiveScene().name == "Game")
         {
             // プレイヤーがﾀﾋんだら
             if (Player_Bullet.ChangeScene)
@@ -61,7 +58,7 @@ public class ChangScene : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 // ゲーム シーンに移動
-                SceneManager.LoadScene("Test Sugiura");
+                SceneManager.LoadScene("Game");
             }
         }
     }
