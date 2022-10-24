@@ -8,7 +8,9 @@ public class Player_ULT : MonoBehaviour
     private RectTransform obj;
     public GameObject Ultimate;
     public GameObject UltLast;
-    public TextMeshProUGUI readyUI;
+    public GameObject FullChargeAnim;
+    private bool once;
+    public static bool DestroyObj = false;
 
     // 必殺技までのカウント
     static float ult_cnt = 0.0f;
@@ -30,7 +32,8 @@ public class Player_ULT : MonoBehaviour
     void Start()
     {
         obj = GetComponent<RectTransform>();
-        readyUI.alpha = 0.0f;
+
+        once = true;
 
         ult_cnt = 0.0f;
         play = false;
@@ -42,16 +45,6 @@ public class Player_ULT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ult_MaxCnt <= ult_cnt)
-        {
-            readyUI.alpha = 1.0f;
-        }
-        else
-        {
-            readyUI.alpha = 0.0f;
-        }
-
-
         if (!play)
         {
             // tmpを今のカウントまで少しずつ値を増やす
@@ -65,6 +58,14 @@ public class Player_ULT : MonoBehaviour
             {
                 ult_cnt = ult_MaxCnt;
                 tmp = ult_MaxCnt;
+                if (once)
+                {
+                    DestroyObj = false;
+                    Instantiate(FullChargeAnim,
+                               new Vector3(-290.0f, 217.0f, 0.0f),
+                               Quaternion.identity);
+                    once = false;
+                }
             }
         }
         else
@@ -99,12 +100,15 @@ public class Player_ULT : MonoBehaviour
                     ultPos = new Vector2(-7.5f, 4.5f);
                     CreateTimer = 120;
                     BombNum = 0;
+
+                    DestroyObj = true;
+                    once = true;
                 }
             }
         }
 
         // オブジェクトの大きさを反映する
-        obj.sizeDelta = new Vector2(tmp * (450 / ult_MaxCnt), obj.sizeDelta.y);
+        obj.sizeDelta = new Vector2(tmp * (520.0f / ult_MaxCnt), obj.sizeDelta.y);
     }
 
     // 必殺技カウントを加算したい場所で呼び出す
@@ -135,8 +139,8 @@ public class Player_ULT : MonoBehaviour
         }
         else
         {
-            play = false;
             Instantiate(UltLast, new Vector3(0.0f, 0.0f, 0.0f), Quaternion.identity);
+            play = false;
         }
     }
 }
