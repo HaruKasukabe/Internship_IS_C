@@ -269,5 +269,16 @@ public class Familiar : MonoBehaviour
                 Destroy(collision.gameObject);
             }
         }
+        // 必殺技にあたったか
+        if (collision.gameObject.tag == "ULT_Bullet")
+        {
+            // この使い魔のフラグがfalseなら
+            if (GetAliveFlg() == (int)Status.Caught)
+            {
+                Debug.Log("使い魔を救出しました");
+                // 使い魔のステータスをSaveに変える
+                SetAliveFlg();
+            }
+        }
     }
 }
