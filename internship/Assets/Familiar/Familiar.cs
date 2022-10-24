@@ -13,6 +13,7 @@ public class Familiar : MonoBehaviour
     }
 
     // 変数宣言
+    SpriteRenderer fami;                        // 使い魔のスプライトレンダラー
     public int BulletTime = 30;                 // 弾を打ち出す間隔
     public GameObject BulletObject;             // 弾オブジェクト
     GameObject Player;                          // プレイヤーオブジェクト
@@ -40,6 +41,8 @@ public class Familiar : MonoBehaviour
     void Start()
     {
         Debug.Log("使い魔が生成されました");
+        // 使い魔のスプライトレンダラーを取得
+        fami = GetComponent<SpriteRenderer>();
         // シーンからPlayerタグのオブジェクトを探してPlayer変数に代入
         Player = GameObject.FindWithTag("Player");
         m_PosFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
@@ -146,6 +149,9 @@ public class Familiar : MonoBehaviour
 
             // 使い魔のステータスが追従のとき
             case Status.Follow:
+                // 使い魔の向きを反転
+                fami.flipX = false;
+
                 BulletTime++; // 弾発射カウントをプラス
 
                 // 一定時間以上になったら弾を発射

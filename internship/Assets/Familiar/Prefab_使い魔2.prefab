@@ -162,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BulletTime: 30
-  BulletObject: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
+  BulletObject: {fileID: 8082840082514115128, guid: 694aa4991ea8f9e47afc214c55a5c234, type: 3}
   MaxFamiliar: 20
   ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
 --- !u!82 &-1242975503873152982
