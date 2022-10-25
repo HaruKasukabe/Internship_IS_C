@@ -166,6 +166,7 @@ MonoBehaviour:
   BulletObject: {fileID: 8082840082514115128, guid: 694aa4991ea8f9e47afc214c55a5c234, type: 3}
   MaxFamiliar: 20
   ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
+  DeathEffect: {fileID: 3613216716500092743, guid: be89636bd4781db499c49ec6ec211b4c, type: 3}
 --- !u!82 &8224766504296383961
 AudioSource:
   m_ObjectHideFlags: 0

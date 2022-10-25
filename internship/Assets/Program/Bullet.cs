@@ -11,6 +11,9 @@ public class Bullet : MonoBehaviour
 
     public static float Bullet_Power;
 
+    // 消滅エフェクト
+    public GameObject DeathEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +49,10 @@ public class Bullet : MonoBehaviour
             Destroy(collision.gameObject); // 敵を削除
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Player_ULT.AddUltCnt();
+
+            Instantiate(DeathEffect,
+                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                    Quaternion.identity);
         }
     }
 }

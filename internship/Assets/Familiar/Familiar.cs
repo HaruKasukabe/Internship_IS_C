@@ -35,6 +35,9 @@ public class Familiar : MonoBehaviour
     public AudioClip ShotSE;
     AudioSource audioSource;
 
+    // 消滅エフェクト
+    public GameObject DeathEffect;
+
     // ===============================
     // 初期化関数
     // ===============================
@@ -227,6 +230,11 @@ public class Familiar : MonoBehaviour
         if (Player_Bullet.Hit_DeathFamiliar && (FamiliarNum == m_PosFamiliar.GetNowNumFamiliar()))
         {
             Destroy(this.gameObject);
+
+            Instantiate(DeathEffect,
+                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                    Quaternion.identity);
+
             m_PosFamiliar.FalseUseFlag(m_PosFamiliar.GetNowNumFamiliar());
             m_PosFamiliar.subNowNumFamiliar();
             Player_Bullet.Hit_DeathFamiliar = false;

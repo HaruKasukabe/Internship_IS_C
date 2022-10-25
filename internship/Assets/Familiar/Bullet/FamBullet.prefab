@@ -103,6 +103,7 @@ MonoBehaviour:
   MoveSpeed: 0.05
   enemy: {fileID: 6691906814709101996, guid: a12db9f1243cd1448b6009f2347273fb, type: 3}
   player_bullet: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
+  DeathEffect: {fileID: 1198685791298359133, guid: 92e33b7b73398c942b1de0d3d4691056, type: 3}
 --- !u!50 &7127653627130521290
 Rigidbody2D:
   serializedVersion: 4
