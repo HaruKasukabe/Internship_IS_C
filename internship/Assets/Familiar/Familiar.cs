@@ -223,6 +223,15 @@ public class Familiar : MonoBehaviour
                 break;
         }
 
+        // ŒÂ‘Ì”Ô†‚ÆŒ»İ‚Ìg‚¢–‚‚Ì”‚ª“¯‚¶‚¾‚Á‚½‚ç
+        if (Player_Bullet.Hit_DeathFamiliar && (FamiliarNum == m_PosFamiliar.GetNowNumFamiliar()))
+        {
+            Destroy(this.gameObject);
+            m_PosFamiliar.FalseUseFlag(m_PosFamiliar.GetNowNumFamiliar());
+            m_PosFamiliar.subNowNumFamiliar();
+            Player_Bullet.Hit_DeathFamiliar = false;
+        }
+
     }
 
     // ===============================

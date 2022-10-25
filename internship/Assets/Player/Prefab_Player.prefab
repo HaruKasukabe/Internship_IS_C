@@ -180,8 +180,9 @@ MonoBehaviour:
   MinPosY: -4
   Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
   BulletTimer: 30
-  HP: 0
+  HP: 1
   FlashingCycle: 30
+  InvincibleTime: 240
   DeathEffect: {fileID: 1748626068085943692, guid: 97b3199480aa5e94ca0d475d85a2d3eb, type: 3}
   ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
   DamageSE: {fileID: 8300000, guid: 2c1dc3b596fc1964b9f21bc26d937776, type: 3}

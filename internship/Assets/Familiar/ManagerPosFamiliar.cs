@@ -52,6 +52,22 @@ public class ManagerPosFamiliar : MonoBehaviour
         return Num; // 個体番号を返す
     }
 
+    // 現在の使い魔の数を返す
+    public int GetNowNumFamiliar()
+    {
+        return NowNumFamiliar;
+    }
+
+    // プレイヤーの代わりに使い魔が死ぬときに使う
+    public void subNowNumFamiliar()
+    {
+        NowNumFamiliar--;
+    }
+    public void FalseUseFlag(int num)
+    {
+        UseFlg[num] = false;
+    }
+
     // 個体番号から定位置を割り当て
     public Vector2 GetFamiliarPos(int Num)
     {
