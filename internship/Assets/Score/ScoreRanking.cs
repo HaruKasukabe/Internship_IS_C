@@ -19,6 +19,9 @@ public class ScoreRanking : MonoBehaviour
     public TextMeshProUGUI Fourth;
     public TextMeshProUGUI Fifth;
 
+    // 前のシーン
+    private string beforeScene = "";
+
     // 1回だけ
     private bool once;
     // 汎用
@@ -30,8 +33,12 @@ public class ScoreRanking : MonoBehaviour
         // OnActiveSceneChanged関数を使うために
         SceneManager.activeSceneChanged += OnActiveSceneChanged;
 
+        beforeScene = SceneManager.GetActiveScene().name;
+
         once = true;
         tmp = 0;
+
+        obj.transform.position = new Vector3(-1000.0f, 740.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -49,25 +56,38 @@ public class ScoreRanking : MonoBehaviour
         }
 
         // テキストに値を反映する
-        First.SetText("1st : {0000000}", Score_Ranking[0]);
-        Second.SetText("2nd : {0000000}", Score_Ranking[1]);
-        Third.SetText("3rd : {0000000}", Score_Ranking[2]);
-        Fourth.SetText("4th : {0000000}", Score_Ranking[3]);
-        Fifth.SetText("5th : {0000000}", Score_Ranking[4]);
+        First.SetText(" 1I  {0000}", Score_Ranking[0]);
+        Second.SetText("2I  {0000}", Score_Ranking[1]);
+        Third.SetText("3I  {0000}", Score_Ranking[2]);
+        Fourth.SetText("4I  {0000}", Score_Ranking[3]);
+        Fifth.SetText("5I  {0000}", Score_Ranking[4]);
     }
 
     // シーンが変わった瞬間に呼び出される関数
     void OnActiveSceneChanged(Scene prevScene, Scene nextScene)
     {
-        if (nextScene.name == "Title")
+        if (nextScene.name == "Ranking")
         {
-            once = true;
-            obj.transform.position = new Vector3(460.0f, 740.0f, 0.0f);
+            obj.transform.position = new Vector3(1000.0f, 740.0f, 0.0f);
         }
         else
         {
             obj.transform.position = new Vector3(-1000.0f, 740.0f, 0.0f);
         }
+
+        // ランキング更新のタイミング
+        // ゲーム >> タイトル
+        // リザルト >> タイトル
+        // リザルト >> ゲーム
+        if ((beforeScene == "Game" && nextScene.name == "Title")
+            || (beforeScene == "Result" && nextScene.name == "Title")
+            || (beforeScene == "Result" && nextScene.name == "Game"))
+        {
+            Debug.Log("ランキング更新しました");
+            once = true;
+        }
+
+        beforeScene = nextScene.name;
     }
 
     private void Awake()

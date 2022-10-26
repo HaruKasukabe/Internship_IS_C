@@ -20,8 +20,37 @@ public class ChangScene : MonoBehaviour
             // Enterキーで
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                // ゲーム シーンに移動
-                SceneManager.LoadScene("Game");
+                if (UI_Color.Select == 0)
+                    // ゲーム シーンに移動
+                    SceneManager.LoadScene("Game");
+                if (UI_Color.Select == 1)
+                    // ランキング シーンに移動
+                    SceneManager.LoadScene("Ranking");
+                if (UI_Color.Select == 2)
+                    // ランキング シーンに移動
+                    SceneManager.LoadScene("Option");
+            }
+        }
+
+        // 今のシーンが「ランキング」なら
+        if (SceneManager.GetActiveScene().name == "Ranking")
+        {
+            // Enterキーで
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                // タイトル シーンに移動
+                SceneManager.LoadScene("Title");
+            }
+        }
+
+        // 今のシーンが「オプション」なら
+        if (SceneManager.GetActiveScene().name == "Option")
+        {
+            // Enterキーで
+            if (Input.GetKeyDown(KeyCode.Return))
+            {
+                // タイトル シーンに移動
+                SceneManager.LoadScene("Title");
             }
         }
 
@@ -33,6 +62,18 @@ public class ChangScene : MonoBehaviour
             {
                 // 3秒後にシーン遷移
                 Invoke("ChengeToResult", 3.0f);
+            }
+
+            // ポーズ中
+            if (Mathf.Approximately(Time.timeScale, 0f))
+            {
+                // Enterキーで
+                if (Input.GetKeyDown(KeyCode.Return))
+                {
+                    Time.timeScale = 1f;
+                    // ゲーム シーンに移動
+                    SceneManager.LoadScene("Title");
+                }
             }
 
             // デバッグ用
@@ -50,15 +91,12 @@ public class ChangScene : MonoBehaviour
             // Enterキーで
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                // タイトル シーンに移動
-                SceneManager.LoadScene("Title");
-            }
-
-            // Spaceキーで
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                // ゲーム シーンに移動
-                SceneManager.LoadScene("Game");
+                if(UI_Color.left)
+                    // タイトル シーンに移動
+                    SceneManager.LoadScene("Title");
+                if (UI_Color.right)
+                    // ゲーム シーンに移動
+                    SceneManager.LoadScene("Game");
             }
         }
     }
