@@ -49,6 +49,9 @@ public class Player_Bullet : MonoBehaviour
     public AudioClip DamageSE;
     AudioSource audioSource;
 
+    // アニメーション用
+    private Animator anime = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +66,7 @@ public class Player_Bullet : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
+        anime = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -105,11 +109,23 @@ public class Player_Bullet : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
+            anime.SetBool("front", false);
+            anime.SetBool("back", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            anime.SetBool("back", false);
         }
         // 右
         if (Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
+            anime.SetBool("front", true);
+            anime.SetBool("back", false);
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            anime.SetBool("front", false);
         }
 
         // 移動範囲に制限をかける
