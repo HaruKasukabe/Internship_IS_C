@@ -31,6 +31,8 @@ public class Familiar : MonoBehaviour
     bool[] SavePosFlg;                          // 使い魔の救出後の位置が定位置か調べるフラグ
     int SaveTimer;                              // 助けた際のタイマー
 
+    public int CageHP = 5;                      // 檻の体力
+
     // 射撃のSE
     public AudioClip ShotSE;
     AudioSource audioSource;
@@ -64,6 +66,9 @@ public class Familiar : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
+
+        // 最初は透明
+        fami.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
     // ===============================
@@ -279,9 +284,25 @@ public class Familiar : MonoBehaviour
             // この使い魔のフラグがfalseなら
             if (GetAliveFlg() == (int)Status.Caught)
             {
-                Debug.Log("使い魔を救出しました");
-                // 使い魔のステータスをSaveに変える
-                SetAliveFlg();
+                if (CageHP <= 1)
+                {
+                    Debug.Log("使い魔を救出しました");
+                    // 使い魔のステータスをSaveに変える
+                    SetAliveFlg();
+
+                    // 子オブジェクト(檻)を消す
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        Destroy(child.gameObject);
+                    }
+
+                    // 透明解除
+                    fami.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                }
+                else
+                {
+                    CageHP--;
+                }
                 // 弾オブジェクトを削除
                 Destroy(collision.gameObject);
             }
@@ -295,6 +316,15 @@ public class Familiar : MonoBehaviour
                 Debug.Log("使い魔を救出しました");
                 // 使い魔のステータスをSaveに変える
                 SetAliveFlg();
+
+                // 子オブジェクト(檻)を消す
+                foreach (Transform child in gameObject.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                // 透明解除
+                fami.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
     }

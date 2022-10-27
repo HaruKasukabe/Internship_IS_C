@@ -91,10 +91,10 @@ public class ChangScene : MonoBehaviour
             // Enterキーで
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                if(UI_Color.left)
+                if (UI_Color.right)
                     // タイトル シーンに移動
                     SceneManager.LoadScene("Title");
-                if (UI_Color.right)
+                if (UI_Color.left)
                     // ゲーム シーンに移動
                     SceneManager.LoadScene("Game");
             }

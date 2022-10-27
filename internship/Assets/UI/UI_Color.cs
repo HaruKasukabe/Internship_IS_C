@@ -94,12 +94,12 @@ public class UI_Color : MonoBehaviour
                 right = true;
             }
 
-            if(left)
+            if(right)
             {
                 GoGameStart.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
                 GoTitle.color = new Color(1.0f, 1.0f, 1.0f, alpha);
             }
-            if(right)
+            if(left)
             {
                 GoGameStart.color = new Color(1.0f, 1.0f, 1.0f, alpha);
                 GoTitle.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
