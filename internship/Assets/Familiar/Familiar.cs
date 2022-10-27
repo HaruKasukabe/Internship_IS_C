@@ -162,10 +162,15 @@ public class Familiar : MonoBehaviour
                     var Bullet = Instantiate(BulletObject,
                     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                      Quaternion.identity);
+<<<<<<< HEAD
                     Bullet.name = "Familiar_Bullet" + gameObject.name;
                     Volum = Fam_Count.MaxVolum;
                     audioSource.volume = Volum;
                     audioSource.PlayOneShot(ShotSE);
+=======
+                    Bullet.name = "Familiar_Bullet";
+                    audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume / 2.0f);
+>>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
                 }
 
                 // ÉvÉåÉCÉÑÅ[Ç…í«è]

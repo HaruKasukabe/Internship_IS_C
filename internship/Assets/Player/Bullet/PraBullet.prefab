@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6978637320247897347}
   - component: {fileID: 2291322847381755413}
   m_Layer: 6
-  m_Name: Prefab_Bullet
+  m_Name: PraBullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 0.05
-  enemy: {fileID: 6691906814709101996, guid: 3ae3e3b6b4daf1b49bbd675061ab2995, type: 3}
+  enemy: {fileID: 6691906814709101996, guid: a12db9f1243cd1448b6009f2347273fb, type: 3}
   player_bullet: {fileID: 5303681046468263340, guid: ca323946244be754dabd822b3f383c29, type: 3}
 --- !u!50 &7127653627130521290
 Rigidbody2D:

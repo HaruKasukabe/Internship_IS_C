@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // 敵の移動速度
-     float MoveSpeed = 0.000001f;
+    public float MoveSpeed = 0.01f;
     // このエネミーのスコア
     public int NumScore = 100;
     // 仮で敵のスコアをランダムで生成
@@ -54,4 +54,16 @@ public class Enemy : MonoBehaviour
         Debug.Log(TestNumScore[i]);
         return TestNumScore[i];
     }
+<<<<<<< HEAD
+=======
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Bullet")
+        {
+            Destroy(this.gameObject);      // 敵を削除
+            Destroy(collision.gameObject); // 弾を削除
+        }
+    }
+
+>>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
 }

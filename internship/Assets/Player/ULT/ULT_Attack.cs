@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ULT_Attack : MonoBehaviour
 {
+    public Enemy enemy;
+
     // 生成されてからのフレームをカウント
     private int cnt;
     // オブジェクト消滅時に時間動かしていい？
@@ -20,11 +22,14 @@ public class ULT_Attack : MonoBehaviour
     {
         cnt++;
 
+        if (cnt >= 359)
+        {
+            if(TimeMove)
+                Time.timeScale = 1.0f;
+        }
         if (cnt >= 370)
         {
             Destroy(this.gameObject);
-            if(TimeMove)
-                Time.timeScale = 1.0f;
         }
     }
 
@@ -36,28 +41,9 @@ public class ULT_Attack : MonoBehaviour
             {
                 Debug.Log("Enemy ULT Hit");
                 Destroy(collision.gameObject);
-                Score.AddScore(10);
+                Score.AddScore(enemy.GetEnemyScore());
                 Player_ULT.AddUltCnt();
             }
-
-            //if (collision.gameObject.tag == "ene1")
-            //{
-            //    Debug.Log("当たったのはene1でした");
-            //    Destroy(collision.gameObject);
-            //    Score.AddScore(10);
-            //}
-            //if (collision.gameObject.tag == "ene2")
-            //{
-            //    Debug.Log("当たったのはene2でした");
-            //    Destroy(collision.gameObject);
-            //    Score.AddScore(100);
-            //}
-            //if (collision.gameObject.tag == "ene3")
-            //{
-            //    Debug.Log("当たったのはene3でした");
-            //    Destroy(collision.gameObject);
-            //    Score.AddScore(1000);
-            //}
         }
     }
 }

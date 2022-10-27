@@ -6,7 +6,10 @@ public class CreateEnemy : MonoBehaviour
 {
     // 敵を生成するタイマー
     int CreateCout = 0;
-    public GameObject Enemy;
+    public GameObject EnemyRed;
+    public GameObject EnemyPurple;
+    public GameObject EnemyBlack;
+    private int SelectEnemy;
     public float EnemyPos;
     public int CreaterTime = 600;
 
@@ -14,6 +17,7 @@ public class CreateEnemy : MonoBehaviour
     void Start()
     {
         CreateCout = 0;
+        SelectEnemy = 0;
     }
 
     // Update is called once per frame
@@ -29,7 +33,25 @@ public class CreateEnemy : MonoBehaviour
             CreateCout = 0;
             EnemyPos = Random.Range(-3, 3);
             // EnemyPos = Random.value;
-            Instantiate(Enemy, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
+            // 3種類の敵からランダムに生成
+            SelectEnemy = Random.Range(0, 3);
+            switch(SelectEnemy)
+            {
+                case 0:
+                    Instantiate(EnemyRed, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
+                    break;
+
+                case 1:
+                    Instantiate(EnemyPurple, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
+                    break;
+
+                case 2:
+                    Instantiate(EnemyBlack, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

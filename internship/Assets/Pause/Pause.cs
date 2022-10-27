@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Pause : MonoBehaviour
 {
-    public TextMeshProUGUI pauseUI;
-
+    public GameObject pauseUI;
 
     // 決定のSE
     public AudioClip Des_SE;
     AudioSource audioSource;
 
-
     // Start is called before the first frame update
     void Start()
     {
-        pauseUI.alpha = 0.0f;
+        pauseUI.transform.position = new Vector3(0.0f, 100.0f, -1.0f);
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
@@ -28,28 +25,22 @@ public class Pause : MonoBehaviour
         // 'P'キーでポーズ画面切替
         if (Input.GetKeyDown(KeyCode.P))
         {
-            // audioSource.PlayOneShot(Des_SE);
-            // ポーズUIのアルファ値を変える
-            if (pauseUI.alpha == 0.0f)
+            audioSource.PlayOneShot(Des_SE, VolumeControl.SE_Volume);
+
+            if (Time.timeScale == 0f)
             {
-                pauseUI.alpha = 1.0f;
-                Time.timeScale = 0.0f;
+                // ポーズUIをカメラ外に移動する
+                pauseUI.transform.position = new Vector3(0.0f, 100.0f, -1.0f);
+                // 進行
+                Time.timeScale = 1f;
             }
-            else
+            else if (Time.timeScale == 1f)
             {
-                pauseUI.alpha = 0.0f;
-                Time.timeScale = 1.0f;
+                // ポーズUIをカメラ内に移動する
+                pauseUI.transform.position = new Vector3(0.0f, 0.0f, -1.0f);
+                // 停止
+                Time.timeScale = 0f;
             }
-        }
-        // ポーズUIが表示されてなければ通常通り進行
-        if (pauseUI.alpha == 0.0f)
-        {
-            Time.timeScale = 1.0f;
-        }
-        // ポーズUIが表示されてる時は停止
-        else
-        {
-            Time.timeScale = 0.0f;
         }
     }
 }

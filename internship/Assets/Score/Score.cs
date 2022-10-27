@@ -30,7 +30,6 @@ public class Score : MonoBehaviour
     }
 
     // スコアを加算したい場所で呼び出す
-    // Score.AddScore(10);
     // 引数 : １回で増やしたい値
     public static void AddScore(int num)
     {

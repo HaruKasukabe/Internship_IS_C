@@ -9,9 +9,12 @@ public class Bullet : MonoBehaviour
     public Enemy enemy;
     public Player_Bullet player_bullet;
 
+<<<<<<< HEAD
     public static bool ScoreFlag;
 
     // 弾の威力
+=======
+>>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
     public static float Bullet_Power;
     // 弾が使い魔のものかどうかを判定するための文字列
     private string Familiar_Name = "Familiar_Bullet";
@@ -34,8 +37,13 @@ public class Bullet : MonoBehaviour
         // ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
+<<<<<<< HEAD
 
         if (this.gameObject.name == "Player_Bullet" || gameObject.name.Contains(Familiar_Name))
+=======
+        
+        if (this.gameObject.name == "Player_Bullet" || this.gameObject.name == "Familiar_Bullet")
+>>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
         {
             // 弾を移動
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
@@ -61,13 +69,6 @@ public class Bullet : MonoBehaviour
             }
         }
 
-        if (ScoreFlag)
-        {
-            Score.AddScore(enemy.GetEnemyScore());// スコア加算
-            ScoreFlag = false;
-        }
-
-
         // カメラ外に出たら削除
         if (!GetComponent<Renderer>().isVisible)
         {
@@ -79,10 +80,18 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy")
         {
+<<<<<<< HEAD
             //Score.AddScore(enemy.GetEnemyScore());// スコア加算
             //Destroy(this.gameObject);      // バレットを削除
             //Destroy(collision.gameObject); // 敵を削除
             //Player_ULT.AddUltCnt();
+=======
+            
+            Destroy(this.gameObject);      // バレットを削除
+            Destroy(collision.gameObject); // 敵を削除
+            Score.AddScore(enemy.GetEnemyScore());// スコア加算
+            Player_ULT.AddUltCnt();
+>>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
         }
     }
 }
