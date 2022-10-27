@@ -15,7 +15,7 @@ public class Seeker_Bullet : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Seeker_Bullet : MonoBehaviour
             t.transform.position = pos;
             //敵からプレイヤーに向かうベクトルをつくる
             //プレイヤーの位置から敵の位置（弾の位置）を引く
-            Vector2 vec = (player.transform.position - pos);
+            Vector2 vec = (player.transform.position - pos).normalized * 10;
             //弾のRigidBody2Dコンポネントのvelocityに先程求めたベクトルを入れて力を加える
             t.GetComponent<Rigidbody2D>().velocity = vec;
         }

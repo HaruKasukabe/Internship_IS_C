@@ -34,6 +34,9 @@ public class Familiar : MonoBehaviour
     public AudioClip ShotSE;
     AudioSource audioSource;
 
+    private float Volum;
+
+
     // ===============================
     // 初期化関数
     // ===============================
@@ -58,6 +61,9 @@ public class Familiar : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
+
+        Volum = audioSource.volume;
+
     }
 
     // ===============================
@@ -68,7 +74,7 @@ public class Familiar : MonoBehaviour
         // *****ポーズ中は何もしない*****
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-        Debug.Log("現在の使い魔のステータスです" + status);
+        //Debug.Log("現在の使い魔のステータスです" + status);
         // *****テータスに応じて処理を変える*****
         switch (status)
         {
@@ -156,7 +162,9 @@ public class Familiar : MonoBehaviour
                     var Bullet = Instantiate(BulletObject,
                     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                      Quaternion.identity);
-                    Bullet.name = "Familiar_Bullet";
+                    Bullet.name = "Familiar_Bullet" + gameObject.name;
+                    Volum = Fam_Count.MaxVolum;
+                    audioSource.volume = Volum;
                     audioSource.PlayOneShot(ShotSE);
                 }
 

@@ -11,17 +11,10 @@ public class Enemy : MonoBehaviour
     // 仮で敵のスコアをランダムで生成
     int[] TestNumScore = { 10, 100, 1000 };
 
-    // 被弾のSE
-    public AudioClip HitSE;
-    // 死亡のSE
-    public AudioClip DieSE;
-    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        // コンポーネント取得　
-        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -61,14 +54,4 @@ public class Enemy : MonoBehaviour
         Debug.Log(TestNumScore[i]);
         return TestNumScore[i];
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Bullet")
-        {
-            Bullet.ScoreFlag = true;
-            Destroy(this.gameObject);      // 敵を削除
-            Destroy(collision.gameObject); // 弾を削除
-        }
-    }
-
 }

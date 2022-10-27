@@ -16,7 +16,7 @@ public class Player_Bullet : MonoBehaviour
     // 弾を生成するタイマー
     public int BulletTimer = 60;
     // プレイヤーの体力
-    public int HP;
+    public float HP;
     // 点滅
     //SpriteRenderer
     SpriteRenderer sp;
@@ -33,9 +33,9 @@ public class Player_Bullet : MonoBehaviour
 
     // 射撃のSE
     public AudioClip ShotSE;
-    // 被弾のSE
-    public AudioClip DamageSE;
     AudioSource audioSource;
+
+    private float Volum;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,9 @@ public class Player_Bullet : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
+        // 音量変更
+        Volum = audioSource.volume;
+
     }
 
     // Update is called once per frame
@@ -87,17 +90,19 @@ public class Player_Bullet : MonoBehaviour
         // 弾を生成
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
-            // audioSource.PlayOneShot(ShotSE);
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;
             pos.y -= 0.4f;
 
-            var Bullet = Instantiate(Bulletobj,
+            var PlayerBullet = Instantiate(Bulletobj,
                 new Vector3(pos.x, pos.y, this.transform.position.z),
                 Quaternion.identity);
-            Bullet.name = "Player_Bullet";
+            PlayerBullet.name = "Player_Bullet";
             Debug.Log("弾を生成しました");
+            Volum = Fam_Count.MaxVolum;
+            audioSource.volume = Volum;
+            audioSource.PlayOneShot(ShotSE);
         }
         // 弾に当たったら点滅
         if (ChangeScene)

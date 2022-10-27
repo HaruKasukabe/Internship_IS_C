@@ -38,8 +38,9 @@ public class Createfamiliar : MonoBehaviour
             // 敵の位置を自動生成するためのランダム生成
             float j = Random.Range(-3, 3);
             // 画面右に使い魔を生成
-            Instantiate(FamiliarObject[i],
+            var Familiar = Instantiate(FamiliarObject[i],
                 new Vector3(9.0f, j, 0.0f), Quaternion.identity);
+            Familiar.name = "Prefab_使い魔" + (i + 1);
             CreateFamiliarTime = 0;
             SetLimitFamiliar(true);
         }

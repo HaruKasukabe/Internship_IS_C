@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 737154271963698137}
   - component: {fileID: 1279317341845032424}
-  - component: {fileID: -2157140442410447404}
   - component: {fileID: 2412052106066822683}
   - component: {fileID: 7446442235687843153}
   - component: {fileID: 3476482470313057026}
@@ -89,19 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-2157140442410447404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6879942426661114819}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782e1b223def608439ba9066aef482ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 1
 --- !u!50 &2412052106066822683
 Rigidbody2D:
   serializedVersion: 4
@@ -163,11 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BulletTime: 30
   BulletObject: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
-  CaptiveMoveSpeed: 0.01
   MaxFamiliar: 20
-  NormalMoveSpeed: 0.02
-  CaughtMoveSpeed: 0.01
-  ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
+  ShotSE: {fileID: 8300000, guid: 10d1e629e4197b842acb721ba969f1b3, type: 3}
 --- !u!82 &-1242975503873152982
 AudioSource:
   m_ObjectHideFlags: 0
@@ -180,7 +163,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.05
   m_Pitch: 1
   Loop: 0
   Mute: 0
