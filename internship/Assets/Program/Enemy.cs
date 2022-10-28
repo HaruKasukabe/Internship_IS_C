@@ -54,8 +54,6 @@ public class Enemy : MonoBehaviour
         Debug.Log(TestNumScore[i]);
         return TestNumScore[i];
     }
-<<<<<<< HEAD
-=======
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Bullet")
@@ -64,6 +62,4 @@ public class Enemy : MonoBehaviour
             Destroy(collision.gameObject); // ’e‚ðíœ
         }
     }
-
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
 }

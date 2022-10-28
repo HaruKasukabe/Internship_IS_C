@@ -18,7 +18,6 @@ public class Player_Bullet : MonoBehaviour
     // 弾を生成するタイマー
     public int BulletTimer = 60;
     // プレイヤーの体力
-    public float HP;
     public int HP = 1;
     // 敵の弾に当たったか
     private bool Hit;

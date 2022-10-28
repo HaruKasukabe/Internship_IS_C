@@ -14,13 +14,10 @@ GameObject:
   - component: {fileID: 5028083584262095289}
   - component: {fileID: 6691906814709101996}
   - component: {fileID: 2042512702041930204}
-<<<<<<< HEAD:internship/Assets/Enemy/Purple/Enemy_Pirple.prefab
   - component: {fileID: 8680951816459979673}
   - component: {fileID: 2234560523899438823}
-=======
   - component: {fileID: 3246347267054066697}
   - component: {fileID: 3112024491715199770}
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee:internship/Assets/Enemy/Purple/Enemy_Purple.prefab
   m_Layer: 0
   m_Name: Enemy_Purple
   m_TagString: Enemy
@@ -103,16 +100,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010117391161811448}
-  m_Enabled: 1
-<<<<<<< HEAD:internship/Assets/Enemy/Purple/Enemy_Pirple.prefab
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be6f73d2a9327544ab8f844d14c12adb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NumScore: 100
-  HitSE: {fileID: 0}
-  DieSE: {fileID: 0}
-=======
+  m_Enabled: 1: {fileID: 0}
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b9956fa147fe25f4a8d311e5418b72bd, type: 2}
   m_CullingMode: 0
@@ -124,7 +112,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee:internship/Assets/Enemy/Purple/Enemy_Purple.prefab
 --- !u!61 &5028083584262095289
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -284,32 +271,6 @@ AudioSource:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010117391161811448}
   m_Enabled: 1
-<<<<<<< HEAD:internship/Assets/Enemy/Purple/Enemy_Pirple.prefab
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b9956fa147fe25f4a8d311e5418b72bd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2234560523899438823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4010117391161811448}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ecf1a244e24eb488368b5344fe9435, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HP: 3
-=======
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
@@ -398,4 +359,3 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee:internship/Assets/Enemy/Purple/Enemy_Purple.prefab

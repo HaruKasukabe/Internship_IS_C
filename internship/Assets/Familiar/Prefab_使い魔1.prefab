@@ -150,11 +150,7 @@ MonoBehaviour:
   BulletTime: 30
   BulletObject: {fileID: 8082840082514115128, guid: 694aa4991ea8f9e47afc214c55a5c234, type: 3}
   MaxFamiliar: 20
-<<<<<<< HEAD
   ShotSE: {fileID: 8300000, guid: 10d1e629e4197b842acb721ba969f1b3, type: 3}
-=======
-  ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
 --- !u!82 &8224766504296383961
 AudioSource:
   m_ObjectHideFlags: 0
@@ -165,15 +161,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-<<<<<<< HEAD
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.05
-=======
   m_audioClip: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.3
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
   m_Pitch: 1
   Loop: 0
   Mute: 0
