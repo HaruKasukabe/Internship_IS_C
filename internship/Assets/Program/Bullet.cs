@@ -8,13 +8,9 @@ public class Bullet : MonoBehaviour
     public float MoveSpeed = 0.01f;
     public Enemy enemy;
     public Player_Bullet player_bullet;
-
-<<<<<<< HEAD
     public static bool ScoreFlag;
 
     // 弾の威力
-=======
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
     public static float Bullet_Power;
     // 弾が使い魔のものかどうかを判定するための文字列
     private string Familiar_Name = "Familiar_Bullet";
@@ -24,6 +20,9 @@ public class Bullet : MonoBehaviour
     public float Fam_1_Power = 0.1f;
     public float Fam_2_Power = 0.25f;
     public float Fam_3_Power = 0.5f;
+
+    // 消滅エフェクト
+    public GameObject DeathEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -37,13 +36,9 @@ public class Bullet : MonoBehaviour
         // ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
-<<<<<<< HEAD
 
         if (this.gameObject.name == "Player_Bullet" || gameObject.name.Contains(Familiar_Name))
-=======
-        
-        if (this.gameObject.name == "Player_Bullet" || this.gameObject.name == "Familiar_Bullet")
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
+
         {
             // 弾を移動
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
@@ -79,19 +74,16 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
-        {
-<<<<<<< HEAD
-            //Score.AddScore(enemy.GetEnemyScore());// スコア加算
-            //Destroy(this.gameObject);      // バレットを削除
-            //Destroy(collision.gameObject); // 敵を削除
-            //Player_ULT.AddUltCnt();
-=======
-            
+        {          
             Destroy(this.gameObject);      // バレットを削除
             Destroy(collision.gameObject); // 敵を削除
             Score.AddScore(enemy.GetEnemyScore());// スコア加算
             Player_ULT.AddUltCnt();
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
+
+
+            Instantiate(DeathEffect,
+                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                    Quaternion.identity);
         }
     }
 }

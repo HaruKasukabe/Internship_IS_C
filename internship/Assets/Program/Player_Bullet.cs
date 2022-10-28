@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player_Bullet : MonoBehaviour
 {
+    // 使い魔の個体番号を管理するスクリプトの呼び出し用
+    ManagerPosFamiliar m_NuFamiliar;
     // プレイヤー移動の変数生成
     public float MoveSpeed = 0.01f;
     // プレイヤーの移動範囲制限
@@ -17,13 +19,24 @@ public class Player_Bullet : MonoBehaviour
     public int BulletTimer = 60;
     // プレイヤーの体力
     public float HP;
-    // 点滅
-    //SpriteRenderer
+    public int HP = 1;
+    // 敵の弾に当たったか
+    private bool Hit;
+    public static bool Hit_DeathFamiliar;
+    /* 点滅 */
+    // スプライトレンダラー
     SpriteRenderer sp;
     // 周期
     public int FlashingCycle = 30;
     // カウント
     private int FlashingCnt = 0;
+    // 無敵時間
+    public int InvincibleTime = 240;
+    // ↑のカウント用
+    private int InvincibleCnt;
+
+    // ヒットストップ時間
+    private int HitStop = 0;
 
     // 消滅エフェクト
     public GameObject DeathEffect;
@@ -34,25 +47,50 @@ public class Player_Bullet : MonoBehaviour
     // 射撃のSE
     public AudioClip ShotSE;
     AudioSource audioSource;
-
     private float Volum;
+
+    // アニメーション用
+    private Animator anime = null;
 
     // Start is called before the first frame update
     void Start()
     {
         sp = GetComponent<SpriteRenderer>();
         ChangeScene = false;
+        Hit = false;
+        Hit_DeathFamiliar = false;
+
+        InvincibleCnt = InvincibleTime;
+
+        m_NuFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
         // 音量変更
         Volum = audioSource.volume;
+        anime = GetComponent<Animator>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ChangeScene)
+        {
+            Debug.Log("ヒットストップ");
+            HitStop++;
+            if (HitStop > 60)
+            {
+                Time.timeScale = 1.0f;
+
+                Destroy(this.gameObject);
+
+                Instantiate(DeathEffect,
+                            new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                            Quaternion.identity);
+            }
+        }
+
         // ポーズ中は何もしない
         if (Mathf.Approximately(Time.timeScale, 0f))
             return;
@@ -74,11 +112,23 @@ public class Player_Bullet : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             this.transform.Translate(-MoveSpeed, 0.0f, 0.0f);
+            anime.SetBool("front", false);
+            anime.SetBool("back", true);
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            anime.SetBool("back", false);
         }
         // 右
         if (Input.GetKey(KeyCode.RightArrow))
         {
             this.transform.Translate(MoveSpeed, 0.0f, 0.0f);
+            anime.SetBool("front", true);
+            anime.SetBool("back", false);
+        }
+        else if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            anime.SetBool("front", false);
         }
 
         // 移動範囲に制限をかける
@@ -90,10 +140,7 @@ public class Player_Bullet : MonoBehaviour
         // 弾を生成
         if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
         {
-<<<<<<< HEAD
-=======
             audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume);
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;
@@ -108,38 +155,53 @@ public class Player_Bullet : MonoBehaviour
             audioSource.volume = Volum;
             audioSource.PlayOneShot(ShotSE);
         }
+
         // 弾に当たったら点滅
-        if (ChangeScene)
+        if (Hit)
         {
-            FlashingCnt++;
-            if (FlashingCnt >= FlashingCycle)
+            InvincibleCnt++;
+            if (InvincibleCnt < InvincibleTime)
             {
-                sp.enabled = !sp.enabled;
-                FlashingCnt = 0;
+                FlashingCnt++;
+                if (FlashingCnt >= FlashingCycle)
+                {
+                    sp.enabled = !sp.enabled;
+                    FlashingCnt = 0;
+                }
             }
-
-            Invoke("MeDestroy", 1.0f);
+            else
+            {
+                sp.enabled = true;
+                Hit = false;
+            }
         }
-    }
-
-    private void MeDestroy()
-    {
-        Destroy(this.gameObject);
-
-        Instantiate(DeathEffect,
-                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
-                    Quaternion.identity);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "E_Bullet")
         {
-            Destroy(other.gameObject);
-            HP -= 1;
-            if (HP <= 0)
+            if (InvincibleCnt >= InvincibleTime)
             {
-                ChangeScene = true;
+                if (m_NuFamiliar.GetNowNumFamiliar() > 0)
+                {
+                    Debug.Log("身代わり");
+                    InvincibleCnt = 0;
+                    Hit = true;
+                    Hit_DeathFamiliar = true;
+                }
+                else
+                {
+                    HP -= 1;
+                }
+
+                if (HP <= 0)
+                {
+                    ChangeScene = true;
+                    Time.timeScale = 0.0f;
+                }
+
+                Destroy(other.gameObject);
             }
         }
     }

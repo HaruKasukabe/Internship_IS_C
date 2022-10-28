@@ -70,26 +70,26 @@ public class VolumeControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // タイトルシーン or ポーズ中で音量調整
-        if (SceneManager.GetActiveScene().name == "Title" || Mathf.Approximately(Time.timeScale, 0f))
+        // オプションシーン or ポーズ中で音量調整
+        if (SceneManager.GetActiveScene().name == "Option" || Mathf.Approximately(Time.timeScale, 0f))
         {
             if (Gauge_Cnt >= 30)
             {
                 if (Input.GetKey(KeyCode.RightArrow))
                 {
                     if (up)
-                        BGM_Volume += 0.02f;
+                        BGM_Volume += 0.01f;
                     if (down)
-                        SE_Volume += 0.02f;
+                        SE_Volume += 0.01f;
 
                     Gauge_Cnt = 0;
                 }
                 if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     if (up)
-                        BGM_Volume -= 0.02f;
+                        BGM_Volume -= 0.01f;
                     if (down)
-                        SE_Volume -= 0.02f;
+                        SE_Volume -= 0.01f;
 
                     Gauge_Cnt = 0;
                 }
@@ -127,8 +127,8 @@ public class VolumeControl : MonoBehaviour
             音量(TMP)
         --------------*/
         // テキストに値を反映する
-        BGM_Text.SetText("{0.0}%", BGM_Volume * 100.0f);
-        SE_Text.SetText("{0.0}%", SE_Volume * 100.0f);
+        BGM_Text.SetText("{0}%", Mathf.Floor(BGM_Volume * 100.0f));
+        SE_Text.SetText("{0}%", Mathf.Floor(SE_Volume * 100.0f));
 
         /*--------------
             選択棒
@@ -137,7 +137,7 @@ public class VolumeControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             // 今のシーンが「タイトル」なら
-            if (SceneManager.GetActiveScene().name == "Title")
+            if (SceneManager.GetActiveScene().name == "Option")
             {
                 // 移動
                 Select_Bar.transform.position = new Vector3(BGM_Gauge.position.x - 100.0f, BGM_Gauge.position.y, 0.0f);
@@ -156,7 +156,7 @@ public class VolumeControl : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             // 今のシーンが「タイトル」なら
-            if (SceneManager.GetActiveScene().name == "Title")
+            if (SceneManager.GetActiveScene().name == "Option")
             {
                 // 移動
                 Select_Bar.transform.position = new Vector3(SE_Gauge.position.x - 100.0f, SE_Gauge.position.y, 0.0f);

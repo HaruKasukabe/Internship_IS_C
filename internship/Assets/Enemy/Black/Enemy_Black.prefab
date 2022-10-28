@@ -83,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fa8b08eff7294cf4a81996712ccd065d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -165,7 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0.01
   NumScore: 100
-  ult: {fileID: -497674172992671286, guid: 137bbaf8f7919ec4ebb32e9ed32b62bd, type: 3}
   HitSE: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
   DieSE: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
 --- !u!114 &2042512702041930204

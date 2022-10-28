@@ -27,7 +27,7 @@ public class ULT_Attack : MonoBehaviour
             if(TimeMove)
                 Time.timeScale = 1.0f;
         }
-        if (cnt >= 370)
+        if (cnt >= 400)
         {
             Destroy(this.gameObject);
         }

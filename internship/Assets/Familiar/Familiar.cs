@@ -13,6 +13,7 @@ public class Familiar : MonoBehaviour
     }
 
     // 変数宣言
+    SpriteRenderer fami;                        // 使い魔のスプライトレンダラー
     public int BulletTime = 30;                 // 弾を打ち出す間隔
     public GameObject BulletObject;             // 弾オブジェクト
     GameObject Player;                          // プレイヤーオブジェクト
@@ -30,11 +31,15 @@ public class Familiar : MonoBehaviour
     bool[] SavePosFlg;                          // 使い魔の救出後の位置が定位置か調べるフラグ
     int SaveTimer;                              // 助けた際のタイマー
 
+    public int CageHP = 5;                      // 檻の体力
+
     // 射撃のSE
     public AudioClip ShotSE;
     AudioSource audioSource;
-
     private float Volum;
+
+    // 消滅エフェクト
+    public GameObject DeathEffect;
 
 
     // ===============================
@@ -43,6 +48,8 @@ public class Familiar : MonoBehaviour
     void Start()
     {
         Debug.Log("使い魔が生成されました");
+        // 使い魔のスプライトレンダラーを取得
+        fami = GetComponent<SpriteRenderer>();
         // シーンからPlayerタグのオブジェクトを探してPlayer変数に代入
         Player = GameObject.FindWithTag("Player");
         m_PosFamiliar = GameObject.FindWithTag("Player").GetComponent<ManagerPosFamiliar>();
@@ -61,9 +68,10 @@ public class Familiar : MonoBehaviour
 
         // コンポーネント取得　
         audioSource = GetComponent<AudioSource>();
-
         Volum = audioSource.volume;
 
+        // 最初は透明
+        fami.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
     // ===============================
@@ -152,6 +160,9 @@ public class Familiar : MonoBehaviour
 
             // 使い魔のステータスが追従のとき
             case Status.Follow:
+                // 使い魔の向きを反転
+                fami.flipX = false;
+
                 BulletTime++; // 弾発射カウントをプラス
 
                 // 一定時間以上になったら弾を発射
@@ -162,15 +173,13 @@ public class Familiar : MonoBehaviour
                     var Bullet = Instantiate(BulletObject,
                     new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
                      Quaternion.identity);
-<<<<<<< HEAD
                     Bullet.name = "Familiar_Bullet" + gameObject.name;
                     Volum = Fam_Count.MaxVolum;
                     audioSource.volume = Volum;
                     audioSource.PlayOneShot(ShotSE);
-=======
+
                     Bullet.name = "Familiar_Bullet";
-                    audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume / 2.0f);
->>>>>>> 0f94a737a22e022ec199545e4716bc7b5f53b5ee
+
                 }
 
                 // プレイヤーに追従
@@ -230,6 +239,20 @@ public class Familiar : MonoBehaviour
                 break;
         }
 
+        // 個体番号と現在の使い魔の数が同じだったら
+        if (Player_Bullet.Hit_DeathFamiliar && (FamiliarNum == m_PosFamiliar.GetNowNumFamiliar()))
+        {
+            Destroy(this.gameObject);
+
+            Instantiate(DeathEffect,
+                    new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z),
+                    Quaternion.identity);
+
+            m_PosFamiliar.FalseUseFlag(m_PosFamiliar.GetNowNumFamiliar());
+            m_PosFamiliar.subNowNumFamiliar();
+            Player_Bullet.Hit_DeathFamiliar = false;
+        }
+
     }
 
     // ===============================
@@ -269,11 +292,47 @@ public class Familiar : MonoBehaviour
             // この使い魔のフラグがfalseなら
             if (GetAliveFlg() == (int)Status.Caught)
             {
+                if (CageHP <= 1)
+                {
+                    Debug.Log("使い魔を救出しました");
+                    // 使い魔のステータスをSaveに変える
+                    SetAliveFlg();
+
+                    // 子オブジェクト(檻)を消す
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        Destroy(child.gameObject);
+                    }
+
+                    // 透明解除
+                    fami.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+                }
+                else
+                {
+                    CageHP--;
+                }
+                // 弾オブジェクトを削除
+                Destroy(collision.gameObject);
+            }
+        }
+        // 必殺技にあたったか
+        if (collision.gameObject.tag == "ULT_Bullet")
+        {
+            // この使い魔のフラグがfalseなら
+            if (GetAliveFlg() == (int)Status.Caught)
+            {
                 Debug.Log("使い魔を救出しました");
                 // 使い魔のステータスをSaveに変える
                 SetAliveFlg();
-                // 弾オブジェクトを削除
-                Destroy(collision.gameObject);
+
+                // 子オブジェクト(檻)を消す
+                foreach (Transform child in gameObject.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+
+                // 透明解除
+                fami.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
             }
         }
     }
