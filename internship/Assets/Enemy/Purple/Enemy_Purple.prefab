@@ -13,9 +13,7 @@ GameObject:
   - component: {fileID: 8680951816459979673}
   - component: {fileID: 5028083584262095289}
   - component: {fileID: 6691906814709101996}
-  - component: {fileID: 2042512702041930204}
-  - component: {fileID: 8680951816459979673}
-  - component: {fileID: 2234560523899438823}
+  - component: {fileID: 9175960812633902933}
   - component: {fileID: 3246347267054066697}
   - component: {fileID: 3112024491715199770}
   m_Layer: 0
@@ -100,7 +98,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4010117391161811448}
-  m_Enabled: 1: {fileID: 0}
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b9956fa147fe25f4a8d311e5418b72bd, type: 2}
   m_CullingMode: 0
@@ -152,9 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0.01
   NumScore: 1000
-  HitSE: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
-  DieSE: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
---- !u!114 &2042512702041930204
+--- !u!114 &9175960812633902933
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,10 +159,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 4010117391161811448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f93b61aa70e22041a8f26131fd242a7, type: 3}
+  m_Script: {fileID: 11500000, guid: a503989c0efc66e47b3d4c3b8cdde3c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1443697602903394456, guid: 25d568e7d89b4d64b8c8d45b82c43c8f, type: 3}
+  Bullet: {fileID: 1443697602903394456, guid: 25d568e7d89b4d64b8c8d45b82c43c8f, type: 3}
+  _Velocity_0: 180
+  Degree: 60
+  Angle_Split: 3
+  targetTime: 1
 --- !u!82 &3246347267054066697
 AudioSource:
   m_ObjectHideFlags: 0

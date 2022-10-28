@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1443697602903394459}
   - component: {fileID: 2988760724216286094}
   - component: {fileID: 359187100530237347}
-  - component: {fileID: 1455904898874219960}
+  - component: {fileID: 4715292881165639012}
   - component: {fileID: 2816449702499436723}
   m_Layer: 6
   m_Name: EneBullet_Purple
@@ -135,7 +135,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &1455904898874219960
+--- !u!114 &4715292881165639012
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,10 +144,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1443697602903394456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f20679c56f630af418ade9d602a4fdd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 8cc1ff2e9e030a2439f059f36f0f0139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 0.03
+  Velocity_0: 0
+  theta: 0
+  Speed: 0.03
 --- !u!95 &2816449702499436723
 Animator:
   serializedVersion: 4

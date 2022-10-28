@@ -10,12 +10,24 @@ public class Seeker_Bullet : MonoBehaviour
     public GameObject seeker;
 
     //一秒ごとに弾を発射するためのもの
-    private float targetTime = 2.0f;
+    public float targetTime = 2.0f;
     private float currentTime = 0;
+
+    Vector3 pos;
+    Vector2 vec;
+
+    private Animator anime = null;
+
+    private bool bullet;
 
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
+
+        anime = GetComponent<Animator>();
+
+        pos = new Vector3(0.0f, 0.0f, 0.0f);
+        vec = new Vector2(0.0f, 0.0f);
     }
 
     // Update is called once per frame
@@ -27,23 +39,75 @@ public class Seeker_Bullet : MonoBehaviour
 
         //一秒経つごとに弾を発射する
         currentTime += Time.deltaTime;
-        if (targetTime < currentTime)
-        {
-            currentTime = 0;
-            //敵の座標を変数posに保存
-            var pos = this.gameObject.transform.position;
-            var rot = this.gameObject.transform.rotation;
 
-            //弾のプレハブを作成
-            var t = Instantiate(seeker) as GameObject;
-            t.name = "Prefab_Seeker";
-            //弾のプレハブの位置を敵の位置にする
-            t.transform.position = pos;
-            //敵からプレイヤーに向かうベクトルをつくる
-            //プレイヤーの位置から敵の位置（弾の位置）を引く
-            Vector2 vec = (player.transform.position - pos).normalized * 10;
-            //弾のRigidBody2Dコンポネントのvelocityに先程求めたベクトルを入れて力を加える
-            t.GetComponent<Rigidbody2D>().velocity = vec;
+        if (this.gameObject.tag == "Enemy")
+        {
+            // エネミーが撃った場合
+            if (targetTime < currentTime)
+            {
+                currentTime = 0;
+
+
+                anime.SetBool("attack", true);
+            }
+
+            if (bullet)
+            {
+                //敵の座標を変数posに保存
+                pos = this.gameObject.transform.position;
+                var rot = this.gameObject.transform.rotation;
+                //弾のプレハブを作成
+                var t = Instantiate(seeker) as GameObject;
+                t.name = "Prefab_Seeker";
+                //弾のプレハブの位置を敵の位置にする
+                t.transform.position = pos;
+                //敵からプレイヤーに向かうベクトルをつくる
+                //プレイヤーの位置から敵の位置（弾の位置）を引く
+                if (player)
+                {
+                    vec = (player.transform.position - pos);
+                }
+                else
+                {
+                    vec = new Vector2(-10.0f, 0.0f);
+                }
+                //弾のRigidBody2Dコンポネントのvelocityに先程求めたベクトルを入れて力を加える
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+
+                bullet = false;
+            }
         }
+        else
+        {
+            // 使い魔が撃った場合
+            if (targetTime < currentTime)
+            {
+                currentTime = 0;
+                //敵の座標を変数posに保存
+                pos = this.gameObject.transform.position;
+                var rot = this.gameObject.transform.rotation;
+
+                //弾のプレハブを作成
+                var t = Instantiate(seeker) as GameObject;
+                t.name = "Prefab_Seeker";
+                //弾のプレハブの位置を敵の位置にする
+                t.transform.position = pos;
+                //敵からプレイヤーに向かうベクトルをつくる
+                //プレイヤーの位置から敵の位置（弾の位置）を引く
+                vec = (player.transform.position - pos);
+                //弾のRigidBody2Dコンポネントのvelocityに先程求めたベクトルを入れて力を加える
+                t.GetComponent<Rigidbody2D>().velocity = vec;
+            }
+        }
+    }
+
+    private void AttackFin()
+    {
+        anime.SetBool("attack", false);
+    }
+
+    public void ShotBullet()
+    {
+        bullet = true;
     }
 }

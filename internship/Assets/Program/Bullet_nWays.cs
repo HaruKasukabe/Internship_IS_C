@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet_nWays : MonoBehaviour
 {
     public float Velocity_0, theta;
+    public float Speed = 0.05f;
 
     Rigidbody2D rid2d;
     void Start()
@@ -13,8 +14,8 @@ public class Bullet_nWays : MonoBehaviour
         rid2d = GetComponent<Rigidbody2D>();
         //äpìxÇçló∂ÇµÇƒíeÇÃë¨ìxåvéZ
         Vector2 bulletV = rid2d.velocity;
-        bulletV.x = Velocity_0 * Mathf.Cos(theta);
-        bulletV.y = Velocity_0 * Mathf.Sin(theta);
+        bulletV.x = Velocity_0 * Mathf.Cos(theta) * Speed;
+        bulletV.y = Velocity_0 * Mathf.Sin(theta) * Speed;
         rid2d.velocity = bulletV;
     }
 

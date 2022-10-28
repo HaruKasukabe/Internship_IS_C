@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8680951816459979673}
   - component: {fileID: 5028083584262095289}
   - component: {fileID: 6691906814709101996}
-  - component: {fileID: 2042512702041930204}
+  - component: {fileID: -5770756032864373705}
   - component: {fileID: 1997784937059356036}
   - component: {fileID: 6444946758534545890}
   m_Layer: 0
@@ -150,9 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0.01
   NumScore: 100
-  HitSE: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
-  DieSE: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
---- !u!114 &2042512702041930204
+--- !u!114 &-5770756032864373705
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -161,10 +159,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4010117391161811448}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f93b61aa70e22041a8f26131fd242a7, type: 3}
+  m_Script: {fileID: 11500000, guid: d82a7cfd67251d74f953b448ad8bde0e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obj: {fileID: 1443697602903394456, guid: 5f5fc22fb9806ef4d86f00a95e2f10ac, type: 3}
+  seeker: {fileID: 1443697602903394456, guid: 5f5fc22fb9806ef4d86f00a95e2f10ac, type: 3}
+  targetTime: 1
 --- !u!82 &1997784937059356036
 AudioSource:
   m_ObjectHideFlags: 0

@@ -68,6 +68,13 @@ public class BGM_Manager : MonoBehaviour
             GameBGM.Stop();
             ResultBGM.Play();
         }
+        // ゲーム　-> タイトル
+        if (beforeScene == "Game" && nextScene.name == "Title")
+        {
+            Debug.Log(beforeScene + "->" + nextScene.name);
+            GameBGM.Stop();
+            TitleBGM.Play();
+        }
         // リザルト -> ゲーム
         if (beforeScene == "Result" && nextScene.name == "Game")
         {

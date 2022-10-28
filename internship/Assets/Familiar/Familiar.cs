@@ -41,7 +41,6 @@ public class Familiar : MonoBehaviour
     // 消滅エフェクト
     public GameObject DeathEffect;
 
-
     // ===============================
     // 初期化関数
     // ===============================
@@ -166,7 +165,7 @@ public class Familiar : MonoBehaviour
                 BulletTime++; // 弾発射カウントをプラス
 
                 // 一定時間以上になったら弾を発射
-                if (BulletTime >= 30 && Input.GetKey(KeyCode.Z))
+                if (BulletTime >= 240 && Input.GetKey(KeyCode.Z))
                 {
                     BulletTime = 0; //カウントを0に
                                     // 弾オブジェクト生成
@@ -309,6 +308,13 @@ public class Familiar : MonoBehaviour
                 }
                 else
                 {
+                    foreach (Transform child in gameObject.transform)
+                    {
+                        Animator anim =  child.GetComponent<Animator>();
+                        anim.SetBool("dmg", true);
+                    }
+                    
+
                     CageHP--;
                 }
                 // 弾オブジェクトを削除

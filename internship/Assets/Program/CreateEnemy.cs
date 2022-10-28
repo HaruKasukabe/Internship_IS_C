@@ -105,15 +105,15 @@ public class CreateEnemy : MonoBehaviour
                     SelectEnemy = Random.Range(0, 3);
                     switch (SelectEnemy)
                     {
-                        case 1:
+                        case 0:
                             Instantiate(EnemyRed, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
                             break;
 
-                        case 2:
+                        case 1:
                             Instantiate(EnemyPurple, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
                             break;
 
-                        case 3:
+                        case 2:
                             Instantiate(EnemyBlack, new Vector3(9.0f, EnemyPos, 0.0f), Quaternion.identity);
                             break;
 

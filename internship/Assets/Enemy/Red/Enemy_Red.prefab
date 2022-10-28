@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 5028083584262095289}
   - component: {fileID: 6691906814709101996}
   - component: {fileID: 2042512702041930204}
-  - component: {fileID: 8680951816459979673}
-  - component: {fileID: 7965019872015726464}
-  - component: {fileID: 2692848457689999809}
-
+  - component: {fileID: -6599249046167248499}
+  - component: {fileID: 1225736528135718704}
+  - component: {fileID: 1665793033768013549}
   m_Layer: 0
   m_Name: Enemy_Red
   m_TagString: Enemy
@@ -152,8 +151,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 0.01
   NumScore: 10
-  HitSE: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
-  DieSE: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
 --- !u!114 &2042512702041930204
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,8 +163,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f93b61aa70e22041a8f26131fd242a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetTime: 1
   obj: {fileID: 1443697602903394456, guid: bd813647e1052d745972b401ff10550f, type: 3}
---- !u!82 &1665793033768013549
+  HP: 3
+  HitSE: {fileID: 0}
+  DieSE: {fileID: 0}
+--- !u!114 &-6599249046167248499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4010117391161811448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52ecf1a244e24eb488368b5344fe9435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &1225736528135718704
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -177,7 +190,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -263,7 +276,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!82 &1225736528135718704
+--- !u!82 &1665793033768013549
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -273,7 +286,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 5a229352717eb1a4cb068b134710ec48, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 0f5e9ccc49b27294fb0e7f7ecf2b048b, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

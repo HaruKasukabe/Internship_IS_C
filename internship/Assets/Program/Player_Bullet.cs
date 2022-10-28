@@ -16,7 +16,7 @@ public class Player_Bullet : MonoBehaviour
     // ¶¬‚·‚é’e‚ð‘I‘ð
     public GameObject Bulletobj;
     // ’e‚ð¶¬‚·‚éƒ^ƒCƒ}[
-    public int BulletTimer = 60;
+    int BulletTimer = 0;
     // ƒvƒŒƒCƒ„[‚Ì‘Ì—Í
     public int HP = 1;
     // “G‚Ì’e‚É“–‚½‚Á‚½‚©
@@ -137,9 +137,9 @@ public class Player_Bullet : MonoBehaviour
         transform.position = limitPos;
 
         // ’e‚ð¶¬
-        if (Input.GetKey(KeyCode.Z) && BulletTimer >= 60)
+        if (Input.GetKey(KeyCode.Z) && BulletTimer >= 120)
         {
-            audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume);
+            //audioSource.PlayOneShot(ShotSE, VolumeControl.SE_Volume);
             BulletTimer = 0;
             Vector2 pos = this.transform.position;
             pos.x += 1;

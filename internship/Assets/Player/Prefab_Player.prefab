@@ -15,7 +15,6 @@ GameObject:
   - component: {fileID: 2448365989445904025}
   - component: {fileID: 7187738043267974294}
   - component: {fileID: 7187738043267974295}
-  - component: {fileID: 7187738043267974290}
   - component: {fileID: 7187738043267974291}
   - component: {fileID: 7187738043267974284}
   - component: {fileID: -7717845242695275369}
@@ -128,7 +127,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.17215915, y: 0.05617261}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -139,7 +138,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4, y: 5}
+  m_Size: {x: 1.1910952, y: 0.7683035}
   m_EdgeRadius: 0
 --- !u!95 &2448365989445904025
 Animator:
@@ -179,13 +178,11 @@ MonoBehaviour:
   MaxPosY: 4
   MinPosY: -4
   Bulletobj: {fileID: 8082840082514115128, guid: 51579bfdd33703a479511930b44ac545, type: 3}
-  BulletTimer: 30
   HP: 1
   FlashingCycle: 30
   InvincibleTime: 240
   DeathEffect: {fileID: 1198685791298359133, guid: 92e33b7b73398c942b1de0d3d4691056, type: 3}
   ShotSE: {fileID: 8300000, guid: ec0f45f602ebc0440ae58a3f2815a704, type: 3}
-  DamageSE: {fileID: 8300000, guid: 2c1dc3b596fc1964b9f21bc26d937776, type: 3}
 --- !u!114 &7187738043267974295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,20 +199,9 @@ MonoBehaviour:
   EnemyPurple: {fileID: 4010117391161811448, guid: 156171c280bef5246bb29f1c1f3a54c7, type: 3}
   EnemyBlack: {fileID: 4010117391161811448, guid: bb9f83eec440b854b8143d81d1fa81b6, type: 3}
   EnemyPos: 0
-  CreaterTime: 600
---- !u!114 &7187738043267974290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7187738043267974279}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 782e1b223def608439ba9066aef482ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 1
+  MaxCreaterTime: 600
+  MinCreaterTime: 150
+  Wave: 6000
 --- !u!114 &7187738043267974291
 MonoBehaviour:
   m_ObjectHideFlags: 0

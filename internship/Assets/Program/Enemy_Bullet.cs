@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Bullet : MonoBehaviour
 {
     //　生成タイマ
-    private float targetTime = 2.0f;
+    public float targetTime = 2.0f;
     private float currentTime = 0.0f;
 
     public GameObject obj;
